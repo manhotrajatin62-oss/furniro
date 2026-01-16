@@ -8,7 +8,6 @@ const CustomSlider = () => {
   const images = [slider1, slider2, slider3];
 
   const [active, setActive] = useState(0);
-  const [direction, setDirection] = useState("next");
 
   const total = images.length;
 
@@ -16,29 +15,36 @@ const CustomSlider = () => {
   const prevIndex = (active - 1 + total) % total;
 
   const goNext = () => {
-    setDirection("next");
     setActive(nextIndex);
   };
 
   const goPrev = () => {
-    setDirection("prev");
     setActive(prevIndex);
   };
 
   const goTo = (index: any) => {
-    setDirection(index > active ? "next" : "prev");
     setActive(index);
+  };
+
+  const getRoomName = (active: any) => {
+    if (active == 0) {
+      return "Bed Room";
+    }
+    if (active == 1) {
+      return "Kitchen";
+    }
+    return "Living Room";
   };
 
   return (
     <section className="relative my-11 flex items-center gap-6 overflow-hidden">
       {/* left button */}
-      <div
+      <button
         onClick={goPrev}
         className="absolute top-[50%] left-5 z-99 flex h-12 w-12 translate-y-[-50%] cursor-pointer items-center justify-center rounded-full bg-white shadow shadow-gray-400"
       >
         <SliderArrow left />
-      </div>
+      </button>
 
       {/* image slider container */}
       <div className="flex items-start gap-6 overflow-hidden">
@@ -48,6 +54,7 @@ const CustomSlider = () => {
           className={`relative h-145 min-w-87 transition-all duration-500 ease-out`}
         >
           <img
+            alt="demo"
             draggable={false}
             src={images[active]}
             className="h-full w-full object-cover"
@@ -66,11 +73,7 @@ const CustomSlider = () => {
                 >
                   <path d="M0 0.5H27" stroke="#616161" />
                 </svg>{" "}
-                {active == 0
-                  ? "Bed Room"
-                  : active == 1
-                    ? "Kitchen"
-                    : "Living Room"}
+                {getRoomName(active)}
               </p>
               <h2 className="text-grey1 text-2xl font-semibold">Inner Peace</h2>
             </div>
@@ -84,6 +87,7 @@ const CustomSlider = () => {
         {/* second slide */}
         <div className="h-121 min-w-87 transition-all duration-500 ease-out">
           <img
+            alt="second slide"
             draggable={false}
             src={images[nextIndex]}
             className="h-full w-full object-cover"
@@ -91,9 +95,9 @@ const CustomSlider = () => {
 
           {/* pagination under second slide */}
           <div className="mt-10 flex items-center justify-start gap-5">
-            {images.map((_, i) => (
+            {images.map((item, i) => (
               <button
-                key={i}
+                key={item}
                 onClick={() => goTo(i)}
                 className={`cursor-pointer rounded-full transition ${i === active ? "bg-transparent" : "bg-grey5 h-3 w-3"} `}
               >
@@ -110,6 +114,7 @@ const CustomSlider = () => {
         {/* third slide */}
         <div className="h-121 w-full transition-all duration-500 ease-out">
           <img
+            alt="third slide"
             draggable={false}
             src={images[(nextIndex + 1) % images.length]}
             className="h-full w-full object-cover"
@@ -118,12 +123,12 @@ const CustomSlider = () => {
       </div>
 
       {/* right button */}
-      <div
+      <button
         onClick={goNext}
         className="absolute top-[50%] right-12 z-99 flex h-12 w-12 translate-y-[-50%] cursor-pointer items-center justify-center rounded-full bg-white shadow shadow-gray-400"
       >
         <SliderArrow />
-      </div>
+      </button>
     </section>
   );
 };

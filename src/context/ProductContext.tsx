@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useMemo, useState } from "react";
 
 export const ProductContext = createContext({});
 
@@ -29,8 +29,10 @@ const ProductContextProvider = ({ children }: any) => {
     fetchData();
   }, []);
 
+  const contextValue = useMemo(() => ({ homeProductData }), [homeProductData]);
+
   return (
-    <ProductContext.Provider value={{homeProductData}}>{children}</ProductContext.Provider>
+    <ProductContext.Provider value={contextValue}>{children}</ProductContext.Provider>
   );
 };
 
