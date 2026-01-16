@@ -2,7 +2,7 @@ import { useState } from "react";
 import slider1 from "../../assets/home/slider1.png";
 import slider2 from "../../assets/home/slider2.png";
 import slider3 from "../../assets/home/slider3.png";
-import { SliderArrow } from "../../components/Icons";
+import { RightArrow, SliderArrow } from "../../components/Icons";
 
 const CustomSlider = () => {
   const images = [slider1, slider2, slider3];
@@ -41,17 +41,44 @@ const CustomSlider = () => {
       </div>
 
       {/* image slider container */}
-      <div className="flex items-start overflow-hidden gap-6">
+      <div className="flex items-start gap-6 overflow-hidden">
         {/* active slide */}
         <div
           key={active}
-          className={`h-145 min-w-87 transition-all duration-500 ease-out`}
+          className={`relative h-145 min-w-87 transition-all duration-500 ease-out`}
         >
           <img
             draggable={false}
             src={images[active]}
             className="h-full w-full object-cover"
           />
+
+          <div className="absolute bottom-10 left-6 flex items-end">
+            <div className="bg-white/72 p-7 backdrop-blur-[3px]">
+              <p className="text-grey2 flex items-center gap-2 text-sm">
+                {"0" + (active + 1)}{" "}
+                <svg
+                  width="27"
+                  height="1"
+                  viewBox="0 0 27 1"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M0 0.5H27" stroke="#616161" />
+                </svg>{" "}
+                {active == 0
+                  ? "Bed Room"
+                  : active == 1
+                    ? "Kitchen"
+                    : "Living Room"}
+              </p>
+              <h2 className="text-grey1 text-2xl font-semibold">Inner Peace</h2>
+            </div>
+
+            <button className="bg-dark-orange flex h-12 w-12 cursor-pointer items-center justify-center">
+              <RightArrow />
+            </button>
+          </div>
         </div>
 
         {/* second slide */}
@@ -93,7 +120,7 @@ const CustomSlider = () => {
       {/* right button */}
       <div
         onClick={goNext}
-        className="absolute top-[50%] right-10 z-99 flex h-12 w-12 translate-y-[-50%] cursor-pointer items-center justify-center rounded-full bg-white shadow shadow-gray-400"
+        className="absolute top-[50%] right-12 z-99 flex h-12 w-12 translate-y-[-50%] cursor-pointer items-center justify-center rounded-full bg-white shadow shadow-gray-400"
       >
         <SliderArrow />
       </div>

@@ -113,9 +113,9 @@ export const BoldHeart = () => (
   </svg>
 );
 
-export const SliderArrow = ({left}:any) => (
+export const SliderArrow = ({ left }: any) => (
   <svg
-  className={left ? "rotate-180" : "rotate-0"}
+    className={left ? "rotate-180" : "rotate-0"}
     width="24"
     height="24"
     viewBox="0 0 24 24"
@@ -126,6 +126,24 @@ export const SliderArrow = ({left}:any) => (
       d="M9.00006 5L16.0001 12L9.00006 19"
       stroke="#B88E2F"
       stroke-width="1.8"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+
+export const RightArrow = () => (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M21 12H3M21 12L15 6M21 12L15 18"
+      stroke="white"
+      stroke-width="1.5"
       stroke-linecap="round"
       stroke-linejoin="round"
     />

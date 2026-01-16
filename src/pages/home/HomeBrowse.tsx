@@ -29,7 +29,7 @@ const HomeBrowse = () => {
       </div>
 
       {/* images container */}
-      <div className="mt-14 grid grid-cols-3 gap-5">
+      <div className="mt-14 max-w-400 mx-auto grid grid-cols-3 gap-5">
         {browseArr?.map((item) => {
           return (
             <div key={item?.title}>

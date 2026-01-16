@@ -1,5 +1,5 @@
 import logo from "../assets/logo.svg";
-import { Cart, Heart, Search, User } from "./Icons";
+import { Cart, Heart, Search, User } from "../components/Icons"
 
 const Navbar = () => {
   return (

@@ -1,5 +1,6 @@
 import HomeBrowse from "./HomeBrowse";
 import HomeCard from "./HomeCard";
+import HomeFurniture from "./HomeFurniture";
 import HomeProducts from "./HomeProducts";
 import HomeSlider from "./HomeSlider";
 
@@ -17,6 +18,9 @@ const Home = () => {
 
       {/* home slider section */}
       <HomeSlider/>
+
+      {/* funiro furniture section */}
+      <HomeFurniture/>
     </>
   );
 };
