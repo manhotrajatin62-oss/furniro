@@ -1,8 +1,17 @@
+import Navbar from "./components/Navbar";
+import Home from "./pages/home/Home";
+
 const App = () => {
   return (
     <>
-      <header></header>
-      <main></main>
+      <header>
+        <Navbar/>
+      </header>
+
+      <main>
+        <Home/>
+      </main>
+
       <footer></footer>
     </>
   );
