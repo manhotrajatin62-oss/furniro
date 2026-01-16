@@ -3,8 +3,8 @@ import { Cart, Heart, Search, User } from "./Icons";
 
 const Navbar = () => {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-99 bg-white">
-      <section className="flex h-10 items-center justify-between py-7 pr-25 pl-13.5">
+    <nav className=" z-999 bg-white">
+      <section className="flex h-full items-center justify-between py-7 pr-25 pl-13.5">
         {/* brand logo*/}
         <div className="flex items-center gap-1 cursor-pointer">
           <img src={logo} alt="brand logo" />

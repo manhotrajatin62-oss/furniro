@@ -1,3 +1,5 @@
+import DarkButton from "../../UI/DarkButton";
+
 const HomeCard = () => {
   return (
     <section className="bg-img relative h-200 w-full">
@@ -8,13 +10,11 @@ const HomeCard = () => {
             Discover Our <br />
             New Collection
           </h1>
-          <p className="text-font py-3">
+          <p className="text-font pt-3 pb-10">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
             tellus, luctus nec ullamcorper mattis.
           </p>
-          <button className="bg-dark-orange mt-10 w-fit cursor-pointer px-12 py-5 font-bold text-white">
-            BUY Now
-          </button>
+          <DarkButton text={"BUY NOW"}/>
         </div>
       </div>
     </section>
