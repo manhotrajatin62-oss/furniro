@@ -29,7 +29,7 @@ const ProductContextProvider = ({ children }: any) => {
     fetchData();
   }, []);
 
-  const contextValue = useMemo(() => ({ homeProductData }), [homeProductData]);
+  const contextValue = useMemo(() => ({ homeProductData, productData }), [homeProductData, productData]);
 
   return (
     <ProductContext.Provider value={contextValue}>{children}</ProductContext.Provider>

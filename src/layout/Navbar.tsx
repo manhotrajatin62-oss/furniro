@@ -20,8 +20,12 @@ const Navbar = () => {
           <Link to={"/shop"}>
             <li className="cursor-pointer">Shop</li>
           </Link>
-          <li className="cursor-pointer">About</li>
-          <li className="cursor-pointer">Contact</li>
+          <Link to={"/about"}>
+            <li className="cursor-pointer">About</li>
+          </Link>
+          <Link to={"/contact"}>
+            <li className="cursor-pointer">Contact</li>
+          </Link>
         </ul>
 
         {/* nav icons */}

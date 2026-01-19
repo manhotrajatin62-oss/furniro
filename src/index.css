@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
-@layer base {
-  :root {
+@theme{
     --color-light: #f4f5f7;
     --color-light-orange: #fff3e3;
     --color-dark-orange: #b88e2f;
     --color-slider: #fcf8f3;
     --color-font: #333333;
     --color-light-font: #666666;
+    --color-results : #F9F1E7;
     --color-footer: #9F9F9F;
     --color-light-footer: #FAF3EA;
     --color-footer-black : #242424;
@@ -20,7 +20,12 @@
     --color-red: #e97171;
     --color-green: #2ec1ac;
   }
-}
+
+  @layer components{
+    .grid-btn{
+      @apply h-15 w-15 rounded-lg bg-results flex items-center justify-center cursor-pointer
+    }
+  }
 
 * {
   box-sizing: border-box;
@@ -32,34 +37,4 @@
   background-size: cover;
   margin-top: -10rem;
   z-index: -1;
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(40px) scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0) scale(1);
-  }
-}
-
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-40px) scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0) scale(1);
-  }
-}
-
-.animate-slide-in-right {
-  animation: slideInRight 0.5s ease-out;
-}
-
-.animate-slide-in-left {
-  animation: slideInLeft 0.5s ease-out;
 }

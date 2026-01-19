@@ -14,13 +14,13 @@ const Home = () => {
       <HomeBrowse />
 
       {/* home products section */}
-      <HomeProducts/>
+      <HomeProducts />
 
       {/* home slider section */}
-      <HomeSlider/>
+      <HomeSlider />
 
       {/* funiro furniture section */}
-      <HomeFurniture/>
+      <HomeFurniture />
     </>
   );
 };

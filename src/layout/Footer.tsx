@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Shipping, Support, Trophy, Warranty } from "../components/Icons";
 
 const Footer = () => {
@@ -54,9 +54,9 @@ const Footer = () => {
       <section className="h-126 border-t border-black/17">
         <div className="flex flex-col gap-12 px-25 pt-12 pb-9">
           {/* links */}
-          <div className="flex h-78 w-280 items-start gap-34">
+          <div className="flex h-78 items-start gap-34"> {/*w-280*/}
             {/* address */}
-            <div>
+            <div className="flex-1">
               <h1 className="text-2xl font-bold text-black">Funiro.</h1>
               <p className="text-footer mt-12">
                 400 University Drive Suite 200 Coral <br />
@@ -71,10 +71,10 @@ const Footer = () => {
                 <div>
                   <p className="text-footer">Links</p>
                   <ul className="mt-13 flex flex-col gap-11">
-                    <li>Home</li>
-                    <li>Shop</li>
-                    <li>About</li>
-                    <li>Contact</li>
+                    <Link to={"/"}><li>Home</li></Link>
+                    <Link to={"/shop"}><li>Shop</li></Link>
+                    <Link to={"/about"}><li>About</li></Link>
+                    <Link to={"/contact"}><li>Contact</li></Link>
                   </ul>
                 </div>
 
