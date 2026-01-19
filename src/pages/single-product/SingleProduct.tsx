@@ -37,7 +37,7 @@ const SingleProduct = () => {
   }, [id]);
 
   return (
-    <section>
+    <section className="mt-20">
 
       {/* breadcrumbs */}
       <SingleProductBreadcrumbs singleProductData={singleProductData} />

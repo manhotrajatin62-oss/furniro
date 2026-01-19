@@ -5,6 +5,7 @@ import About from "./pages/about/About";
 import { lazy } from "react";
 import NotFound from "./pages/NotFound";
 import SingleProduct from "./pages/single-product/SingleProduct";
+import Comparison from "./pages/comparison/Comparison";
 
 const Home = lazy(() => import("./pages/home/Home"));
 
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/shop/:id" element={<SingleProduct />} />
+        <Route path="/comparison" element={<Comparison/>} />
         <Route path="/about" element={<About />} />
       </Route>
       <Route path="*" element={<NotFound/>}/>

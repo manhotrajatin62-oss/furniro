@@ -27,14 +27,18 @@ const ProductContextProvider = ({ children }: any) => {
     }
   }
 
-  
-
   useEffect(() => {
     fetchData();
   }, []);
 
   const contextValue = useMemo(
-    () => ({ homeProductData, productData, setLoading, toggleCart, setToggleCart }),
+    () => ({
+      homeProductData,
+      productData,
+      setLoading,
+      toggleCart,
+      setToggleCart,
+    }),
     [homeProductData, productData, setLoading, toggleCart, setToggleCart],
   );
 

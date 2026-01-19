@@ -1,5 +1,6 @@
 import { CartCross, ShoppingBag } from "./Icons";
 import cartImg from "../assets/cart.png";
+import { Link } from "react-router-dom";
 
 const Cart = ({ toggleCart, setToggleCart }: any) => {
   return (
@@ -82,9 +83,9 @@ const Cart = ({ toggleCart, setToggleCart }: any) => {
             <button className="cursor-pointer rounded-[50px] border border-black px-7 py-1.5 text-sm">
               Checkout
             </button>
-            <button className="cursor-pointer rounded-[50px] border border-black px-7 py-1.5 text-sm">
+           <Link to={"/comparison"}><button onClick={()=>setToggleCart(false)} className="cursor-pointer rounded-[50px] border border-black px-7 py-1.5 text-sm">
               Comparison
-            </button>
+            </button></Link>
           </div>
         </div>
       </section>
