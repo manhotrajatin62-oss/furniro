@@ -7,6 +7,8 @@ const ProductContextProvider = ({ children }: any) => {
   const [homeProductData, setHomeProductData] = useState([]); // data for home products section
   const [loading, setLoading] = useState(false); // false while data is being fetched
 
+ 
+
   // fetch products data
   async function fetchData() {
     try {
@@ -25,14 +27,21 @@ const ProductContextProvider = ({ children }: any) => {
     }
   }
 
+  
+
   useEffect(() => {
     fetchData();
   }, []);
 
-  const contextValue = useMemo(() => ({ homeProductData, productData }), [homeProductData, productData]);
+  const contextValue = useMemo(
+    () => ({ homeProductData, productData, setLoading }),
+    [homeProductData, productData, setLoading],
+  );
 
   return (
-    <ProductContext.Provider value={contextValue}>{children}</ProductContext.Provider>
+    <ProductContext.Provider value={contextValue}>
+      {children}
+    </ProductContext.Provider>
   );
 };
 

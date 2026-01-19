@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import ProductsGrid from "../../components/ProductsGrid";
 import { ProductContext } from "../../context/ProductContext";
+import LightButton from "../../UI/LightButton";
 
 const HomeProducts = () => {
   const { homeProductData }: any = useContext(ProductContext);
@@ -15,9 +16,7 @@ const HomeProducts = () => {
       {/* products grid */}
       <ProductsGrid data={homeProductData} discount />
 
-      <button className="text-dark-orange border-dark-orange cursor-pointer border px-18 py-3 font-bold">
-        Show More
-      </button>
+      <LightButton/>
     </section>
   );
 };

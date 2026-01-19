@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { BoldHeart, Compare, Share } from "../components/Icons";
 
 // discount bubble component
@@ -13,8 +14,10 @@ const Discount = ({ discount, value }: any) => {
 
 const ProductsGrid = ({data, discount}:any) => {
 
+  const navigate = useNavigate()
+
   return (
-    <div className="grid grid-cols-4 h-230 gap-8">
+    <div className="grid grid-cols-4  gap-8"> {/*h-230 */}
         {/* product card */}
 
         {data?.length > 0
@@ -25,11 +28,11 @@ const ProductsGrid = ({data, discount}:any) => {
                   className="bg-light group relative flex h-110 w-70 flex-col"
                 >
                   {/* image and bubble */}
-                  <div className="relative h-75">
+                  <div className="relative flex items-center justify-center h-75">
                     <img
                       draggable={false}
                       src={item?.image}
-                      className="h-full w-full object-contain object-center"
+                      className="h-[80%] w-[80%] object-contain object-center"
                       alt="product"
                     />
                     {discount && (item?.id == 1 ? (
@@ -64,7 +67,7 @@ const ProductsGrid = ({data, discount}:any) => {
 
                   <div className="bg-grey1/72 absolute top-0 right-0 bottom-0 left-0 z-99 flex items-center justify-center opacity-0 transition-opacity duration-200 group-hover:opacity-100">
                     <div className="mx-auto flex w-[90%] flex-col items-center gap-6">
-                      <button className="text-dark-orange cursor-pointer bg-white px-12 py-3 font-bold">
+                      <button onClick={()=>navigate(`/shop/${item?.id}`)} className="text-dark-orange cursor-pointer bg-white px-12 py-3 font-bold">
                         Add to cart
                       </button>
 

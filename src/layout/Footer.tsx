@@ -2,59 +2,67 @@ import { Link, useLocation } from "react-router-dom";
 import { Shipping, Support, Trophy, Warranty } from "../components/Icons";
 
 const Footer = () => {
+  const location = useLocation();
 
-  const location = useLocation()
+  const hideSection =
+    location.pathname == "/" || location.pathname.startsWith("/shop/");
 
   return (
     <>
-      {location.pathname !== "/" && <section className="bg-light-footer h-67 w-full px-13 py-25">
-        <div className="flex h-18 items-center justify-between gap-2">
-          <div className="flex h-full w-fit items-center gap-2">
-            <Trophy />
-            <div>
-              <h1 className="text-footer-black text-xl font-semibold">
-                High Quality
-              </h1>
-              <h2 className="text-grey3 mt-0.5">crafted from top materials</h2>
+      {!hideSection && (
+        <section className="bg-light-footer h-67 w-full px-13 py-25">
+          <div className="flex h-18 items-center justify-between gap-2">
+            <div className="flex h-full w-fit items-center gap-2">
+              <Trophy />
+              <div>
+                <h1 className="text-footer-black text-xl font-semibold">
+                  High Quality
+                </h1>
+                <h2 className="text-grey3 mt-0.5">
+                  crafted from top materials
+                </h2>
+              </div>
             </div>
-          </div>
 
-          <div className="flex h-full w-fit items-center gap-2">
-            <Warranty />
-            <div>
-              <h1 className="text-footer-black text-xl font-semibold">
-                Warranty Protection
-              </h1>
-              <h2 className="text-grey3 mt-0.5">Over 2 years</h2>
+            <div className="flex h-full w-fit items-center gap-2">
+              <Warranty />
+              <div>
+                <h1 className="text-footer-black text-xl font-semibold">
+                  Warranty Protection
+                </h1>
+                <h2 className="text-grey3 mt-0.5">Over 2 years</h2>
+              </div>
             </div>
-          </div>
 
-          <div className="flex h-full w-fit items-center gap-2">
-            <Shipping />
-            <div>
-              <h1 className="text-footer-black text-xl font-semibold">
-                Free Shipping
-              </h1>
-              <h2 className="text-grey3 mt-0.5">Order over 150 $ </h2>
+            <div className="flex h-full w-fit items-center gap-2">
+              <Shipping />
+              <div>
+                <h1 className="text-footer-black text-xl font-semibold">
+                  Free Shipping
+                </h1>
+                <h2 className="text-grey3 mt-0.5">Order over 150 $ </h2>
+              </div>
             </div>
-          </div>
 
-          <div className="flex h-full w-fit items-center gap-2">
-            <Support />
-            <div>
-              <h1 className="text-footer-black text-xl font-semibold">
-                24 / 7 Support
-              </h1>
-              <h2 className="text-grey3 mt-0.5">Dedicated support</h2>
+            <div className="flex h-full w-fit items-center gap-2">
+              <Support />
+              <div>
+                <h1 className="text-footer-black text-xl font-semibold">
+                  24 / 7 Support
+                </h1>
+                <h2 className="text-grey3 mt-0.5">Dedicated support</h2>
+              </div>
             </div>
           </div>
-        </div>
-      </section>}
+        </section>
+      )}
 
       <section className="h-126 border-t border-black/17">
         <div className="flex flex-col gap-12 px-25 pt-12 pb-9">
           {/* links */}
-          <div className="flex h-78 items-start gap-34"> {/*w-280*/}
+          <div className="flex h-78 items-start gap-34">
+            {" "}
+            {/*w-280*/}
             {/* address */}
             <div className="flex-1">
               <h1 className="text-2xl font-bold text-black">Funiro.</h1>
@@ -64,17 +72,24 @@ const Footer = () => {
                 FL 33134 USA
               </p>
             </div>
-
             <div className="flex items-start gap-18">
               {/* links container */}
               <div className="flex h-78 w-88 gap-36">
                 <div>
                   <p className="text-footer">Links</p>
                   <ul className="mt-13 flex flex-col gap-11">
-                    <Link to={"/"}><li>Home</li></Link>
-                    <Link to={"/shop"}><li>Shop</li></Link>
-                    <Link to={"/about"}><li>About</li></Link>
-                    <Link to={"/contact"}><li>Contact</li></Link>
+                    <Link to={"/"}>
+                      <li>Home</li>
+                    </Link>
+                    <Link to={"/shop"}>
+                      <li>Shop</li>
+                    </Link>
+                    <Link to={"/about"}>
+                      <li>About</li>
+                    </Link>
+                    <Link to={"/contact"}>
+                      <li>Contact</li>
+                    </Link>
                   </ul>
                 </div>
 
