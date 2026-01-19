@@ -7,7 +7,7 @@ const ProductContextProvider = ({ children }: any) => {
   const [homeProductData, setHomeProductData] = useState([]); // data for home products section
   const [loading, setLoading] = useState(false); // false while data is being fetched
 
- 
+  const [toggleCart, setToggleCart] = useState(false); // toggle cart section
 
   // fetch products data
   async function fetchData() {
@@ -34,8 +34,8 @@ const ProductContextProvider = ({ children }: any) => {
   }, []);
 
   const contextValue = useMemo(
-    () => ({ homeProductData, productData, setLoading }),
-    [homeProductData, productData, setLoading],
+    () => ({ homeProductData, productData, setLoading, toggleCart, setToggleCart }),
+    [homeProductData, productData, setLoading, toggleCart, setToggleCart],
   );
 
   return (

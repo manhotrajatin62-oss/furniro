@@ -8,7 +8,7 @@ const Hero = () => {
     let path = pathname.slice(1)
 
   return (
-    <section className="relative flex h-79 items-center justify-center overflow-hidden">
+    <section className="relative mt-20 flex h-79 items-center justify-center overflow-hidden">
       <img
         src={hero}
         className="h-fit w-fit opacity-50 blur-[.1875rem]"

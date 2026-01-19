@@ -1,11 +1,18 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.svg";
-import { Cart, Heart, Search, User } from "../components/Icons";
+import Cart from "../components/Cart";
+import { CartSvg, Heart, Search, User } from "../components/Icons";
+import { useContext } from "react";
+import { ProductContext } from "../context/ProductContext";
 
 const Navbar = () => {
+  const {toggleCart, setToggleCart }: any = useContext(ProductContext);
+
+  console.log(toggleCart);
+
   return (
-    <nav className="z-999 bg-white">
-      <section className="flex h-full items-center justify-between py-7 pr-25 pl-13.5">
+    <nav className="fixed top-0 right-0 left-0 z-99 bg-white">
+      <section className="pr-25 flex h-full items-center justify-between py-7 pl-13.5">
         {/* brand logo*/}
         <div className="flex cursor-pointer items-center gap-1">
           <img src={logo} alt="brand logo" />
@@ -33,8 +40,13 @@ const Navbar = () => {
           <User />
           <Search />
           <Heart />
-          <Cart />
+          <CartSvg setToggleCart={setToggleCart} />
         </div>
+
+        {/* cart section */}
+
+          <Cart toggleCart={toggleCart} setToggleCart={setToggleCart} />
+
       </section>
     </nav>
   );
