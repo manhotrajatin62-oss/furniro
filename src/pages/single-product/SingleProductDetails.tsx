@@ -28,12 +28,13 @@ const SingleProductDetails = ({ singleProductData }: any) => {
   ];
 
   function decrement() {
-    if (quantity == 1) return;
+    if (quantity <= 0) return;
 
     setQuantity((prev) => prev - 1);
   }
 
   function increment() {
+    if(quantity >= 5) return;
     setQuantity((prev) => prev + 1);
   }
 

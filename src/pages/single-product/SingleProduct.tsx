@@ -46,7 +46,7 @@ const SingleProduct = () => {
       <SingleProductDetails  singleProductData={singleProductData}/>
 
       {/* product description */}
-      <SingleProductDescription singleProductData={singleProductData}/>
+      <SingleProductDescription/>
 
       {/* related products */}
       <SingleProductsRelated/>

@@ -1,7 +1,8 @@
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import hero from "../assets/hero.jpg";
-import { HeroArrow } from "./Icons";
 import logo from "../assets/logo.svg";
+
+import { Breadcrumb, BreadcrumbItem } from "flowbite-react";
 
 const Hero = () => {
   const { pathname } = useLocation();
@@ -12,6 +13,7 @@ const Hero = () => {
   if (pathname === "/shop") heading = "Shop";
   else if (pathname === "/about") heading = "About";
   else if (pathname === "/comparison") heading = "Product Comparison";
+  else if (pathname === "/cart") heading = "Cart";
 
   return (
     <section className="relative mt-20 flex h-79 items-center justify-center overflow-hidden">
@@ -22,16 +24,21 @@ const Hero = () => {
       />
       <div className="absolute top-[50%] left-[50%] flex translate-[-50%] flex-col items-center text-center font-medium">
         {pathname !== "/shop" && (
-          <img className="h-19 w-19" src={logo} alt="logo" />
+          <img className="h-15 w-15" src={logo} alt="logo" />
         )}
         <h1 className="text-5xl capitalize">{heading}</h1>
-        <div className="mt-3 flex items-center justify-center gap-1.5">
-          <Link to={"/"}>
-            <p>Home</p>
-          </Link>
-          <HeroArrow />
-          <p className="font-light capitalize">{path}</p>
-        </div>
+        <Breadcrumb className="mt-2" aria-label="Breadcrumbs">
+          <BreadcrumbItem
+            href="/"
+            className="[&>a]:text-black [&>a:hover]:text-black! [&>svg]:text-black"
+          >
+            Home
+          </BreadcrumbItem>
+
+          <BreadcrumbItem className="capitalize [&>span]:font-light [&>span]:text-black [&>svg]:text-black">
+            {path}
+          </BreadcrumbItem>
+        </Breadcrumb>
       </div>
     </section>
   );

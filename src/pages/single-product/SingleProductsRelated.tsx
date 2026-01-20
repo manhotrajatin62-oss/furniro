@@ -1,13 +1,32 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import ProductsGrid from "../../components/ProductsGrid";
 import { ProductContext } from "../../context/ProductContext";
 import LightButton from "../../UI/LightButton";
 
 const SingleProductsRelated = () => {
-  const { homeProductData }: any = useContext(ProductContext);
+  const { productData }: any = useContext(ProductContext);
+
+  const [showAll, setShowAll] = useState(false);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    if (!productData) return;
+
+    setData(productData.slice(0, 4));
+  }, [productData]);
+
+  const toggleData = () => {
+    if (showAll) {
+      setData(productData.slice(0, 4));
+    } else {
+      setData(productData);
+    }
+
+    setShowAll(!showAll);
+  };
 
   return (
-    <section className="border-light-grey flex h-185 flex-col items-center border-t">
+    <section className="border-light-grey flex mb-23 flex-col items-center border-t">
       {/* heading */}
       <h1 className="mt-14 text-center text-4xl font-medium">
         Related Products
@@ -15,10 +34,12 @@ const SingleProductsRelated = () => {
 
       {/* products grid */}
       <div className="mx-auto mt-6 mb-11 w-[90%]">
-        <ProductsGrid data={homeProductData.slice(0, 4)} discount />
+        <ProductsGrid data={data} discount />
       </div>
 
-      <LightButton />
+      <LightButton onClick={toggleData}>
+        {showAll ? "Show Less" : "Show More"}
+      </LightButton>
     </section>
   );
 };

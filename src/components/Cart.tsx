@@ -77,15 +77,17 @@ const Cart = ({ toggleCart, setToggleCart }: any) => {
           <hr className="text-light-grey mt-6" />
 
           <div className="flex items-center gap-3 p-6.5">
-            <button className="cursor-pointer rounded-[50px] border border-black px-7 py-1.5 text-sm">
+            <Link to={"/cart"}>
+            <button onClick={()=>setToggleCart(false)} className="cursor-pointer rounded-[50px] border border-black px-7 py-1.5 text-sm">
               Cart
             </button>
+            </Link>
             <button className="cursor-pointer rounded-[50px] border border-black px-7 py-1.5 text-sm">
               Checkout
             </button>
-           <Link to={"/comparison"}><button onClick={()=>setToggleCart(false)} className="cursor-pointer rounded-[50px] border border-black px-7 py-1.5 text-sm">
+          <button className="cursor-pointer rounded-[50px] border border-black px-7 py-1.5 text-sm">
               Comparison
-            </button></Link>
+            </button>
           </div>
         </div>
       </section>

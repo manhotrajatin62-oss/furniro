@@ -1,18 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import Cart from "../components/Cart";
 import { CartSvg, Heart, Search, User } from "../components/Icons";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ProductContext } from "../context/ProductContext";
 
 const Navbar = () => {
-  const {toggleCart, setToggleCart }: any = useContext(ProductContext);
+  const { toggleCart, setToggleCart }: any = useContext(ProductContext);
 
-  console.log(toggleCart);
+  const [showSearch, setShowSearch] = useState(false);
 
   return (
     <nav className="fixed top-0 right-0 left-0 z-99 bg-white">
-      <section className="pr-25 flex h-full items-center justify-between py-7 pl-13.5">
+      <section className="flex h-full items-center justify-between py-7 pr-25 pl-13.5">
         {/* brand logo*/}
         <div className="flex cursor-pointer items-center gap-1">
           <img src={logo} alt="brand logo" />
@@ -21,32 +21,44 @@ const Navbar = () => {
 
         {/* nav list */}
         <ul className="flex items-center gap-10">
-          <Link to={"/"}>
+          <NavLink to={"/"}>
             <li className="cursor-pointer">Home</li>
-          </Link>
-          <Link to={"/shop"}>
+          </NavLink>
+          <NavLink to={"/shop"}>
             <li className="cursor-pointer">Shop</li>
-          </Link>
-          <Link to={"/about"}>
+          </NavLink>
+          <NavLink to={"/about"}>
             <li className="cursor-pointer">About</li>
-          </Link>
-          <Link to={"/contact"}>
+          </NavLink>
+          <NavLink to={"/contact"}>
             <li className="cursor-pointer">Contact</li>
-          </Link>
+          </NavLink>
         </ul>
 
         {/* nav icons */}
         <div className="flex items-center gap-10">
+          <div
+            className={`border-light-grey flex items-center overflow-hidden rounded-4xl border transition-all duration-300 ${showSearch ? "w-50 px-3 py-0.5 opacity-100" : "w-0 border-0 px-0 py-0 opacity-0"} `}
+          >
+            <input
+              placeholder="Search"
+              type="text"
+              className="text-grey1 w-full px-1 text-sm outline-0"
+              name="search"
+              id="search"
+              autoComplete="on"
+            />
+            <Search search />
+          </div>
           <User />
-          <Search />
+          <Search setShowSearch={setShowSearch} />
           <Heart />
           <CartSvg setToggleCart={setToggleCart} />
         </div>
 
         {/* cart section */}
 
-          <Cart toggleCart={toggleCart} setToggleCart={setToggleCart} />
-
+        <Cart toggleCart={toggleCart} setToggleCart={setToggleCart} />
       </section>
     </nav>
   );

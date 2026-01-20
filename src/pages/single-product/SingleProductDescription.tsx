@@ -1,7 +1,7 @@
 import description1 from "../../assets/single-product/description1.png"
 import description2 from "../../assets/single-product/description2.png"
 
-const SingleProductDescription = ({ singleProductData }: any) => {
+const SingleProductDescription = () => {
   return (
     <div className="text-footer border-light-grey h-186 border-t">
       <div className="mx-auto mt-12 flex w-165 items-center gap-13">
