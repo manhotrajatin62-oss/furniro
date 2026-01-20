@@ -1,32 +1,30 @@
-import { useContext, useEffect, useState } from "react";
-import { ProductContext } from "../../context/ProductContext";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import SingleProductBreadcrumbs from "./SingleProductBreadcrumbs";
-import SingleProductDetails from "./SingleProductDetails";
+const SingleProductBreadcrumbs = lazy(
+  () => import("./SingleProductBreadcrumbs"),
+);
+const SingleProductDetails = lazy(() => import("./SingleProductDetails"));
 import SingleProductDescription from "./SingleProductDescription";
-import SingleProductsRelated from "./SingleProductsRelated";
+const SingleProductsRelated = lazy(() => import("./SingleProductsRelated"));
+import Loader from "../../UI/Loader";
+import ErrorBoundary from "../../UI/ErrorBoundary";
 
 const SingleProduct = () => {
   const { id } = useParams();
-
-  const { setLoading }: any = useContext(ProductContext);
 
   const [singleProductData, setSingleProductData] = useState();
 
   // fetch single product
   async function fetchSingleProduct() {
     try {
-      setLoading(true);
       const res = await fetch(`https://fakestoreapi.com/products/${id}`);
       if (!res.ok) {
         throw new Error(res.statusText);
       }
       const data = await res.json();
       setSingleProductData(data);
-      setLoading(false);
     } catch (error: any) {
       console.error(error.message);
-      setLoading(false);
     }
   }
 
@@ -38,18 +36,25 @@ const SingleProduct = () => {
 
   return (
     <section className="mt-20">
+      <ErrorBoundary>
+        <Suspense fallback={<Loader />}>
+          {/* breadcrumbs */}
+          <SingleProductBreadcrumbs singleProductData={singleProductData} />
 
-      {/* breadcrumbs */}
-      <SingleProductBreadcrumbs singleProductData={singleProductData} />
-
-      {/* product details */}
-      <SingleProductDetails  singleProductData={singleProductData}/>
+          {/* product details */}
+          <SingleProductDetails singleProductData={singleProductData} />
+        </Suspense>
+      </ErrorBoundary>
 
       {/* product description */}
-      <SingleProductDescription/>
+      <SingleProductDescription />
 
       {/* related products */}
-      <SingleProductsRelated/>
+      <ErrorBoundary>
+        <Suspense fallback={<Loader />}>
+          <SingleProductsRelated />
+        </Suspense>
+      </ErrorBoundary>
     </section>
   );
 };

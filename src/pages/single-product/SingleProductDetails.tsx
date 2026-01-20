@@ -12,7 +12,8 @@ import {
 } from "../../components/Icons";
 
 const SingleProductDetails = ({ singleProductData }: any) => {
-  const [quantity, setQuantity] = useState(1);
+
+  const [quantity, setQuantity] = useState(0);
 
   let sizes = ["L", "XL", "XS"];
   let color = [
@@ -34,11 +35,9 @@ const SingleProductDetails = ({ singleProductData }: any) => {
   }
 
   function increment() {
-    if(quantity >= 5) return;
+    if (quantity >= 5) return;
     setQuantity((prev) => prev + 1);
   }
-
-  console.log(singleProductData);
 
   return (
     <div>
@@ -46,14 +45,35 @@ const SingleProductDetails = ({ singleProductData }: any) => {
         {/* images container */}
         <div className="flex items-start gap-8">
           <div className="flex flex-col gap-8">
-            <img draggable={false} className="cursor-pointer" src={product1} alt="product" />
-            <img draggable={false} className="cursor-pointer" src={product2} alt="product" />
-            <img draggable={false} className="cursor-pointer" src={product3} alt="product" />
-            <img draggable={false} className="cursor-pointer" src={product4} alt="product" />
+            <img
+              draggable={false}
+              className="cursor-pointer"
+              src={product1}
+              alt="product"
+            />
+            <img
+              draggable={false}
+              className="cursor-pointer"
+              src={product2}
+              alt="product"
+            />
+            <img
+              draggable={false}
+              className="cursor-pointer"
+              src={product3}
+              alt="product"
+            />
+            <img
+              draggable={false}
+              className="cursor-pointer"
+              src={product4}
+              alt="product"
+            />
           </div>
 
           <div className="bg-results flex h-125 w-105 items-center justify-center overflow-hidden rounded-lg">
-            <img draggable={false}
+            <img
+              draggable={false}
               src={singleProductData?.image}
               alt={singleProductData?.title}
               className="h-[80%] w-[80%] object-contain"
@@ -146,7 +166,7 @@ const SingleProductDetails = ({ singleProductData }: any) => {
             </div>
           </div>
 
-          <div className="text-footer  mt-10 space-y-3">
+          <div className="text-footer mt-10 space-y-3">
             <div className="grid grid-cols-[90px_15px_1fr] items-center">
               <span>SKU</span>
               <span>:</span>

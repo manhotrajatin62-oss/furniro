@@ -1,10 +1,15 @@
+import { lazy, Suspense } from "react";
 import HomeBrowse from "./HomeBrowse";
 import HomeCard from "./HomeCard";
 import HomeFurniture from "./HomeFurniture";
-import HomeProducts from "./HomeProducts";
+const HomeProducts = lazy(() => import("./HomeProducts"));
 import HomeSlider from "./HomeSlider";
+import Loader from "../../UI/Loader";
+import ErrorBoundary from "../../UI/ErrorBoundary";
 
 const Home = () => {
+
+
   return (
     <>
       {/* card section */}
@@ -14,7 +19,11 @@ const Home = () => {
       <HomeBrowse />
 
       {/* home products section */}
-      <HomeProducts />
+      <ErrorBoundary>
+        <Suspense fallback={<Loader />}>
+          <HomeProducts />
+        </Suspense>
+      </ErrorBoundary>
 
       {/* home slider section */}
       <HomeSlider />

@@ -1,8 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import { lazy, Suspense, useContext, useState } from "react";
 import Hero from "../../components/Hero";
-import ProductsGrid from "../../components/ProductsGrid";
-import ShopResults from "./ShopResults";
+const ProductsGrid = lazy(() => import("../../components/ProductsGrid"));
+const ShopResults = lazy(() => import("./ShopResults"));
 import { ProductContext } from "../../context/ProductContext";
+import Loader from "../../UI/Loader";
+import ErrorBoundary from "../../UI/ErrorBoundary";
 
 const Shop = () => {
   const { productData }: any = useContext(ProductContext);
@@ -23,41 +25,49 @@ const Shop = () => {
       {/* hero section */}
       <Hero />
 
-      {/* results section */}
-      <ShopResults startIndex={startIndex} endIndex={endIndex} productData={productData}/>
+      <ErrorBoundary>
+        <Suspense fallback={<Loader />}>
+          {/* results section */}
+          <ShopResults
+            startIndex={startIndex}
+            endIndex={endIndex}
+            productData={productData}
+          />
 
-      {/* products section */}
-      <div className="mx-auto mt-14 mb-21 flex w-[90%] flex-col items-center gap-10">
-        <ProductsGrid data={currentProducts} />
+          {/* products section */}
+          <div className="mx-auto mt-14 mb-21 flex w-[90%] flex-col items-center gap-10">
+            <ProductsGrid data={currentProducts} />
 
-        <div className="flex h-22 items-end gap-9">
-          {totalPages > 0
-            ? new Array(totalPages).fill("").map((_, i) => {
-                return (
-                  <button
-                    key={i + 1}
-                    onClick={() => setCurrentPage(i + 1)}
-                    className={`${currentPage === i + 1 ? "bg-dark-orange text-white" : ""} grid-btn`}
-                  >
-                    {i + 1}
-                  </button>
-                );
-              })
-            : null}
+            <div className="flex h-22 items-end gap-9">
+              {totalPages > 0
+                ? new Array(totalPages).fill("").map((_, i) => {
+                    return (
+                      <button
+                        key={i + 1}
+                        onClick={() => setCurrentPage(i + 1)}
+                        className={`${currentPage === i + 1 ? "bg-dark-orange text-white" : ""} grid-btn`}
+                      >
+                        {i + 1}
+                      </button>
+                    );
+                  })
+                : null}
 
-          <button
-          disabled={currentPage === totalPages}
-            className="grid-btn w-24 disabled:cursor-not-allowed"
-            onClick={() => {
-              if (currentPage < totalPages) {
-                setCurrentPage((prev) => prev + 1);
-              }
-            }}
-          >
-            Next
-          </button>
-        </div>
-      </div>
+              <button
+                disabled={currentPage === totalPages}
+                className="grid-btn w-24 disabled:cursor-not-allowed"
+                onClick={() => {
+                  if (currentPage < totalPages) {
+                    setCurrentPage((prev) => prev + 1);
+                  }
+                }}
+              >
+                Next
+              </button>
+            </div>
+          </div>
+        </Suspense>
+      </ErrorBoundary>
     </section>
   );
 };
