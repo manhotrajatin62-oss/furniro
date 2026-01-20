@@ -7,6 +7,7 @@ import NotFound from "./pages/NotFound";
 import SingleProduct from "./pages/single-product/SingleProduct";
 import CartPage from "./pages/cart/CartPage";
 import Checkout from "./pages/checkout/Checkout";
+import Contact from "./pages/contact/Contact";
 
 const Home = lazy(() => import("./pages/home/Home"));
 
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/shop/:id" element={<SingleProduct />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
         <Route path="*" element={<NotFound />} />
       </Route>
