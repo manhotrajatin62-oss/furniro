@@ -28,6 +28,9 @@
     .grid-btn{
       @apply h-15 w-15 rounded-lg bg-results flex items-center justify-center cursor-pointer
     }
+    .input{
+      @apply h-18 rounded-lg border border-footer px-3 outline-0
+    }
   }
 
 * {

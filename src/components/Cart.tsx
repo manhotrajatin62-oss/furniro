@@ -82,9 +82,11 @@ const Cart = ({ toggleCart, setToggleCart }: any) => {
               Cart
             </button>
             </Link>
-            <button className="cursor-pointer rounded-[50px] border border-black px-7 py-1.5 text-sm">
+            <Link to={"/checkout"}>
+            <button onClick={()=>setToggleCart(false)} className="cursor-pointer rounded-[50px] border border-black px-7 py-1.5 text-sm">
               Checkout
             </button>
+            </Link>
           <button className="cursor-pointer rounded-[50px] border border-black px-7 py-1.5 text-sm">
               Comparison
             </button>

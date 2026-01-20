@@ -14,6 +14,9 @@ const Hero = () => {
   else if (pathname === "/about") heading = "About";
   else if (pathname === "/comparison") heading = "Product Comparison";
   else if (pathname === "/cart") heading = "Cart";
+  else if (pathname === "/checkout") heading = "Checkout";
+  else if (pathname === "/contact") heading = "Contact";
+  else if (pathname === "/blog") heading = "Blog";
 
   return (
     <section className="relative mt-20 flex h-79 items-center justify-center overflow-hidden">

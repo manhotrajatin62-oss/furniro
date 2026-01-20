@@ -242,6 +242,7 @@ export const Support = () => (
 export const HeroArrow = () => (
   <svg
     key={"hero_arrow"}
+    className="absolute top-[50%] translate-y-[-50%] right-5 rotate-90"
     width="20"
     height="20"
     viewBox="0 0 20 20"
