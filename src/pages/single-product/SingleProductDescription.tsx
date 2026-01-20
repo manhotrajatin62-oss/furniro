@@ -33,8 +33,8 @@ const SingleProductDescription = () => {
 
       <div className="mt-9 mx-auto justify-center w-309 h-87 flex items-center gap-7">
 
-            <img src={description1} alt="description" />
-            <img src={description2} alt="description" />
+            <img draggable={false} src={description1} alt="description" />
+            <img draggable={false} src={description2} alt="description" />
       </div>
     </div>
   );

@@ -31,7 +31,7 @@ const columns = [
     cell: (row: any) => (
       <div className="flex items-center gap-8 text-xs lg:text-sm">
         <div className="bg-cart flex h-20 w-20 items-center justify-center rounded-lg">
-          <img src={row.image} alt="product" />
+          <img draggable={false} src={row.image} alt="product" />
         </div>
         <h2 className="text-footer">{row.product}</h2>
       </div>

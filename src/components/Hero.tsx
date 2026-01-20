@@ -20,14 +20,14 @@ const Hero = () => {
 
   return (
     <section className="relative mt-20 flex h-79 items-center justify-center overflow-hidden">
-      <img
+      <img draggable={false}
         src={hero}
         className="h-fit w-fit opacity-50 blur-[.1875rem]"
         alt="hero"
       />
       <div className="absolute top-[50%] left-[50%] flex translate-[-50%] flex-col items-center text-center font-medium">
         {pathname !== "/shop" && (
-          <img className="h-15 w-15" src={logo} alt="logo" />
+          <img  draggable={false} className="h-15 w-15" src={logo} alt="logo" />
         )}
         <h1 className="text-5xl capitalize">{heading}</h1>
         <Breadcrumb className="mt-2" aria-label="Breadcrumbs">

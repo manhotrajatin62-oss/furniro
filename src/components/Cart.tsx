@@ -29,7 +29,7 @@ const Cart = ({ toggleCart, setToggleCart }: any) => {
           <div className="flex flex-col gap-5">
             <div className="flex items-center gap-8">
               <div className="bg-cart flex h-26 w-26 items-center justify-center rounded-lg">
-                <img src={cartImg} alt="cart" />
+                <img draggable={false} src={cartImg} alt="cart" />
               </div>
 
               <div className="mr-7.5">
@@ -47,7 +47,7 @@ const Cart = ({ toggleCart, setToggleCart }: any) => {
 
             <div className="flex items-center gap-8">
               <div className="bg-cart flex h-26 w-26 items-center justify-center rounded-lg">
-                <img src={cartImg} alt="cart" />
+                <img draggable={false} src={cartImg} alt="cart" />
               </div>
 
               <div className="mr-7.5">

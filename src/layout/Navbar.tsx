@@ -15,7 +15,7 @@ const Navbar = () => {
       <section className="flex h-full items-center justify-between py-7 pr-25 pl-13.5">
         {/* brand logo*/}
         <div className="flex cursor-pointer items-center gap-1">
-          <img src={logo} alt="brand logo" />
+          <img  draggable={false} src={logo} alt="brand logo" />
           <h1 className="text-3xl font-bold">Furniro</h1>
         </div>
 
@@ -27,11 +27,11 @@ const Navbar = () => {
           <NavLink to={"/shop"}>
             <li className="cursor-pointer">Shop</li>
           </NavLink>
-          <NavLink to={"/about"}>
-            <li className="cursor-pointer">About</li>
-          </NavLink>
           <NavLink to={"/contact"}>
             <li className="cursor-pointer">Contact</li>
+          </NavLink>
+          <NavLink to={"/blog"}>
+            <li className="cursor-pointer">Blog</li>
           </NavLink>
         </ul>
 
