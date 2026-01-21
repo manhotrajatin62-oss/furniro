@@ -1,6 +1,7 @@
-export const User = () => (
+export const User = ({setShowDropdown}:any) => (
   <svg
     key="user"
+    onClick={()=>setShowDropdown((prev:any)=> !prev)}
     className="cursor-pointer"
     width="28"
     height="28"

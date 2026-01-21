@@ -8,13 +8,26 @@ import CartPage from "./pages/cart/CartPage";
 import Checkout from "./pages/checkout/Checkout";
 import Contact from "./pages/contact/Contact";
 import Blog from "./pages/blog/Blog";
+import LoginPage from "./auth/LoginPage";
+import PublicRoute from "./routes/PublicRoute";
+import ProtectedRoute from "./routes/ProtectedRoute";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Home = lazy(() => import("./pages/home/Home"));
 
 const App = () => {
   return (
+    <>
     <Routes>
-      <Route path="/" element={<AppLayout />}>
+      <Route
+        path="/"
+        element={
+          <ProtectedRoute>
+            <AppLayout />
+          </ProtectedRoute>
+        }
+      >
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/shop/:id" element={<SingleProduct />} />
@@ -24,7 +37,18 @@ const App = () => {
         <Route path="/blog" element={<Blog />} />
         <Route path="*" element={<NotFound />} />
       </Route>
+      <Route
+        path="/login"
+        element={
+          <PublicRoute>
+            <LoginPage />
+          </PublicRoute>
+        }
+      />
     </Routes>
+
+    <ToastContainer position="top-right" autoClose={3000} />
+    </>
   );
 };
 

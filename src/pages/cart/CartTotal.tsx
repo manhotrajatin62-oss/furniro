@@ -1,5 +1,4 @@
 import DataTable from "react-data-table-component";
-import cart from "../../assets/cart.png";
 import { DeleteCart } from "../../components/Icons";
 import { Link } from "react-router-dom";
 import { useContext } from "react";

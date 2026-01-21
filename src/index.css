@@ -31,6 +31,12 @@
   .input {
     @apply border-footer h-18 rounded-lg border px-3 outline-0 focus:border-black;
   }
+  .form-input{
+    @apply placeholder:text-grey3 h-8 w-full rounded-lg border bg-white px-4 text-sm outline-none placeholder:text-xs lg:h-10.5 lg:placeholder:text-sm xl:w-90.25
+  }
+  .form-label{
+    @apply text-sm mb-2 
+  }
 }
 
 * {

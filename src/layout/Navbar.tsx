@@ -1,21 +1,49 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import Cart from "../components/Cart";
 import { CartSvg, Heart, NavSearch, Search, User } from "../components/Icons";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { ProductContext } from "../context/ProductContext";
+import { IoExitOutline } from "react-icons/io5";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
-  const { toggleCart, setToggleCart, cartBubble }: any = useContext(ProductContext);
+  const { toggleCart, setToggleCart, cartBubble }: any =
+    useContext(ProductContext);
 
   const [showSearch, setShowSearch] = useState(false);
+
+  let user: any = JSON.parse(localStorage.getItem("user") as any);
+
+  const navigate = useNavigate();
+
+  function clearStorage() {
+    localStorage.clear();
+    navigate("/login");
+    toast.error("Logout Successful");
+  }
+
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  const menuRef: any = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(e: any) {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setShowDropdown(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
     <nav className="fixed top-0 right-0 left-0 z-99 bg-white">
       <section className="flex h-full items-center justify-between py-7 pr-25 pl-13.5">
         {/* brand logo*/}
         <div className="flex cursor-pointer items-center gap-1">
-          <img  draggable={false} src={logo} alt="brand logo" />
+          <img draggable={false} src={logo} alt="brand logo" />
           <h1 className="text-3xl font-bold">Furniro</h1>
         </div>
 
@@ -50,12 +78,34 @@ const Navbar = () => {
             />
             <Search />
           </div>
-          <User />
+          <div className="relative">
+            <User setShowDropdown={setShowDropdown} />
+            <div
+              ref={menuRef}
+              className={`${showDropdown ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"} absolute left-[50%] flex translate-x-[-50%] flex-col items-center bg-white p-4 shadow shadow-gray-400 transition-opacity duration-300`}
+            >
+              <p className="whitespace-nowrap">
+                Hello{" "}
+                <span className="text-dark-orange">
+                  {user.email.split("@")[0]}
+                </span>
+              </p>
+              <div className="bg-light-grey my-2 h-0.5 w-full" />
+              <button
+                onClick={clearStorage}
+                className="flex cursor-pointer items-center gap-2 text-red-500"
+              >
+                <IoExitOutline size={20} /> Logout
+              </button>
+            </div>
+          </div>
           <NavSearch setShowSearch={setShowSearch} />
           <Heart />
           <div className="relative">
             <CartSvg setToggleCart={setToggleCart} />
-           {cartBubble && <div className="w-4 h-4 absolute -top-1 -right-1 rounded-full bg-red"/>}
+            {cartBubble && (
+              <div className="bg-red absolute -top-1 -right-1 h-4 w-4 rounded-full" />
+            )}
           </div>
         </div>
 

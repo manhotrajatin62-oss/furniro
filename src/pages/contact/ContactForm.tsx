@@ -167,6 +167,7 @@ const ContactForm = () => {
                 <textarea
                   rows={4}
                   name="message"
+                  id="message"
                   value={formData.message}
                   onChange={handleChange}
                   placeholder="Hi! I'd like to ask about"
