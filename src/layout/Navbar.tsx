@@ -1,12 +1,12 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import Cart from "../components/Cart";
-import { CartSvg, Heart, Search, User } from "../components/Icons";
+import { CartSvg, Heart, NavSearch, Search, User } from "../components/Icons";
 import { useContext, useState } from "react";
 import { ProductContext } from "../context/ProductContext";
 
 const Navbar = () => {
-  const { toggleCart, setToggleCart }: any = useContext(ProductContext);
+  const { toggleCart, setToggleCart, cartBubble }: any = useContext(ProductContext);
 
   const [showSearch, setShowSearch] = useState(false);
 
@@ -48,12 +48,15 @@ const Navbar = () => {
               id="search"
               autoComplete="on"
             />
-            <Search search />
+            <Search />
           </div>
           <User />
-          <Search setShowSearch={setShowSearch} />
+          <NavSearch setShowSearch={setShowSearch} />
           <Heart />
-          <CartSvg setToggleCart={setToggleCart} />
+          <div className="relative">
+            <CartSvg setToggleCart={setToggleCart} />
+           {cartBubble && <div className="w-4 h-4 absolute -top-1 -right-1 rounded-full bg-red"/>}
+          </div>
         </div>
 
         {/* cart section */}

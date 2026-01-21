@@ -15,9 +15,9 @@ export const User = () => (
   </svg>
 );
 
-export const Search = ({ search, setShowSearch }: any) => (
+export const NavSearch = ({ setShowSearch }: any) => (
   <svg
-    key={"search"}
+    key={"nav-search"}
     onClick={() => setShowSearch((prev: any) => !prev)}
     className="cursor-pointer"
     width="28"
@@ -28,7 +28,26 @@ export const Search = ({ search, setShowSearch }: any) => (
   >
     <path
       d="M24.5 24.5L19.2663 19.257M22.1666 12.25C22.1666 14.88 21.1219 17.4024 19.2621 19.2621C17.4024 21.1219 14.88 22.1666 12.25 22.1666C9.61992 22.1666 7.09757 21.1219 5.23784 19.2621C3.3781 17.4024 2.33331 14.88 2.33331 12.25C2.33331 9.61992 3.3781 7.09757 5.23784 5.23784C7.09757 3.3781 9.61992 2.33331 12.25 2.33331C14.88 2.33331 17.4024 3.3781 19.2621 5.23784C21.1219 7.09757 22.1666 9.61992 22.1666 12.25V12.25Z"
-      stroke={search ? "#616161" : "black"}
+      stroke="black"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+  </svg>
+);
+
+export const Search = ({blog}:any) => (
+  <svg
+    key={"search"}
+    className="cursor-pointer"
+    width="28"
+    height="28"
+    viewBox="0 0 28 28"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M24.5 24.5L19.2663 19.257M22.1666 12.25C22.1666 14.88 21.1219 17.4024 19.2621 19.2621C17.4024 21.1219 14.88 22.1666 12.25 22.1666C9.61992 22.1666 7.09757 21.1219 5.23784 19.2621C3.3781 17.4024 2.33331 14.88 2.33331 12.25C2.33331 9.61992 3.3781 7.09757 5.23784 5.23784C7.09757 3.3781 9.61992 2.33331 12.25 2.33331C14.88 2.33331 17.4024 3.3781 19.2621 5.23784C21.1219 7.09757 22.1666 9.61992 22.1666 12.25V12.25Z"
+      stroke={blog ? "black" : "#616161"}
       strokeWidth="2"
       strokeLinecap="round"
     />
@@ -430,9 +449,10 @@ export const ShoppingBag = ({ setToggleCart }: any) => (
   </svg>
 );
 
-export const CartCross = () => (
+export const CartCross = ({onClick}:any) => (
   <svg
     className="cursor-pointer"
+    onClick={onClick}
     key={"cart-cross"}
     width="20"
     height="20"
@@ -449,10 +469,11 @@ export const CartCross = () => (
   </svg>
 );
 
-export const DeleteCart = () => (
+export const DeleteCart = ({onClick}:any) => (
   <svg
     key={"delete_cart"}
     className="cursor-pointer"
+    onClick={onClick}
     width="28"
     height="28"
     viewBox="0 0 28 28"
@@ -507,7 +528,7 @@ export const Clock = () => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <g clip-path="url(#clip0_63_247)">
+    <g clipPath="url(#clip0_63_247)">
       <path
         d="M23 11.5C23 14.55 21.7884 17.4751 19.6317 19.6317C17.4751 21.7884 14.55 23 11.5 23C8.45001 23 5.52494 21.7884 3.36827 19.6317C1.2116 17.4751 0 14.55 0 11.5C0 8.45001 1.2116 5.52494 3.36827 3.36827C5.52494 1.2116 8.45001 0 11.5 0C14.55 0 17.4751 1.2116 19.6317 3.36827C21.7884 5.52494 23 8.45001 23 11.5ZM11.5 5.03125C11.5 4.84063 11.4243 4.65781 11.2895 4.52302C11.1547 4.38823 10.9719 4.3125 10.7812 4.3125C10.5906 4.3125 10.4078 4.38823 10.273 4.52302C10.1382 4.65781 10.0625 4.84063 10.0625 5.03125V12.9375C10.0625 13.0642 10.0961 13.1886 10.1597 13.2982C10.2233 13.4077 10.3147 13.4985 10.4247 13.5614L15.456 16.4364C15.6211 16.5256 15.8146 16.5467 15.995 16.4952C16.1755 16.4437 16.3287 16.3236 16.4218 16.1607C16.5149 15.9977 16.5406 15.8048 16.4933 15.6232C16.4461 15.4415 16.3297 15.2856 16.169 15.1886L11.5 12.5206V5.03125Z"
         fill="black"

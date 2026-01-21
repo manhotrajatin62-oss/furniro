@@ -1,8 +1,17 @@
 import { CartCross, ShoppingBag } from "./Icons";
-import cartImg from "../assets/cart.png";
 import { Link } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { ProductContext } from "../context/ProductContext";
 
 const Cart = ({ toggleCart, setToggleCart }: any) => {
+
+  const {cart, removeFromCart}:any = useContext(ProductContext)
+
+  const totalPrice = cart.reduce(
+  (total:any, item:any) => total + item.price * item.quantity,
+  0
+);
+
   return (
     <>
       {toggleCart && (
@@ -16,9 +25,9 @@ const Cart = ({ toggleCart, setToggleCart }: any) => {
       <section
         className={`${toggleCart ? "scale-100" : "scale-0"} fixed top-0 right-0 z-99 flex h-150 w-104 origin-top-right flex-col bg-white transition-[scale] duration-200`}
       >
+        <div className="grow pt-7  pl-7">
         {/* cart heading */}
-        <div className="grow pt-7 pr-10 pl-7">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center pr-10 justify-between">
             <h1 className="text-2xl font-semibold">Shopping Cart</h1>
             <ShoppingBag setToggleCart={setToggleCart} />
           </div>
@@ -26,42 +35,34 @@ const Cart = ({ toggleCart, setToggleCart }: any) => {
           <hr className="text-light-grey mt-6 mb-10 w-[85%]" />
 
           {/* cart items */}
-          <div className="flex flex-col gap-5">
-            <div className="flex items-center gap-8">
-              <div className="bg-cart flex h-26 w-26 items-center justify-center rounded-lg">
-                <img draggable={false} src={cartImg} alt="cart" />
-              </div>
+          <div className="flex flex-col mr-4 overflow-y-auto h-80 gap-5">
 
-              <div className="mr-7.5">
-                <h2>Asgaard sofa</h2>
-                <pre className="font-light">
-                  1{"  "}X{"  "}
-                  <span className="text-dark-orange text-sm font-medium">
-                    Rs. 250,000.00
-                  </span>
-                </pre>
-              </div>
+            {cart?.length === 0 ? (
+              <p className="text-center text-lg font-medium">
+                Your cart is empty
+              </p>
+            ) : (
+              cart?.map((item:any) => (
+                <div key={item?.id} className="flex items-center gap-8">
+                  <div className="bg-cart flex h-26 w-26 items-center justify-center rounded-lg">
+                    <img draggable={false} className="w-[60%] h-[60%]" src={item?.image} alt="cart" />
+                  </div>
 
-              <CartCross />
-            </div>
+                  <div className="mr-7.5">
+                    <h2>{item?.title.slice(0,20)}</h2>
+                    <pre className="font-light">
+                      {item?.quantity}{"  "}X{"  "} 
+                      <span className="text-dark-orange text-sm font-medium">
+                       Rs. {item?.price}
+                      </span>
+                    </pre>
+                  </div>
 
-            <div className="flex items-center gap-8">
-              <div className="bg-cart flex h-26 w-26 items-center justify-center rounded-lg">
-                <img draggable={false} src={cartImg} alt="cart" />
-              </div>
+                  <CartCross onClick={()=>removeFromCart(item?.id)}/>
+                </div>
+              ))
+            )}
 
-              <div className="mr-7.5">
-                <h2>Asgaard sofa</h2>
-                <pre className="font-light">
-                  1{"  "}X{"  "}
-                  <span className="text-dark-orange text-sm font-medium">
-                    Rs. 250,000.00
-                  </span>
-                </pre>
-              </div>
-
-              <CartCross />
-            </div>
           </div>
         </div>
 
@@ -70,7 +71,7 @@ const Cart = ({ toggleCart, setToggleCart }: any) => {
           <div className="flex w-[75%] items-center justify-between pl-8">
             <p className="ml-2">Subtotal</p>
             <span className="text-dark-orange font-semibold">
-              Rs. 520,000.00
+              Rs. {(totalPrice).toFixed(2)}
             </span>
           </div>
 
@@ -78,16 +79,22 @@ const Cart = ({ toggleCart, setToggleCart }: any) => {
 
           <div className="flex items-center gap-3 p-6.5">
             <Link to={"/cart"}>
-            <button onClick={()=>setToggleCart(false)} className="cursor-pointer rounded-[50px] border border-black px-7 py-1.5 text-sm">
-              Cart
-            </button>
+              <button
+                onClick={() => setToggleCart(false)}
+                className="cursor-pointer rounded-[50px] border border-black px-7 py-1.5 text-sm"
+              >
+                Cart
+              </button>
             </Link>
             <Link to={"/checkout"}>
-            <button onClick={()=>setToggleCart(false)} className="cursor-pointer rounded-[50px] border border-black px-7 py-1.5 text-sm">
-              Checkout
-            </button>
+              <button
+                onClick={() => setToggleCart(false)}
+                className="cursor-pointer rounded-[50px] border border-black px-7 py-1.5 text-sm"
+              >
+                Checkout
+              </button>
             </Link>
-          <button className="cursor-pointer rounded-[50px] border border-black px-7 py-1.5 text-sm">
+            <button className="cursor-pointer rounded-[50px] border border-black px-7 py-1.5 text-sm">
               Comparison
             </button>
           </div>

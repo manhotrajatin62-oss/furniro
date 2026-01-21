@@ -1,19 +1,23 @@
 import { Breadcrumb, BreadcrumbItem } from "flowbite-react";
+import { useNavigate } from "react-router-dom";
 
 const SingleProductBreadcrumbs = ({ singleProductData }: any) => {
+
+  const navigate = useNavigate()
+
   return (
     <div className="bg-results flex items-center px-25 py-8">
       <div className="mr-6 flex items-center gap-6">
         <Breadcrumb className="mt-2" aria-label="Breadcrumbs">
           <BreadcrumbItem
-            href="/"
-            className="[&>a]:text-footer [&>a:hover]:text-footer! [&>svg]:text-black"
+            onClick={()=>navigate("/")}
+            className="[&>a]:text-footer cursor-pointer [&>a:hover]:text-footer! [&>svg]:text-black"
           >
             Home
           </BreadcrumbItem>
           <BreadcrumbItem
-            href="/shop"
-            className="[&>a]:text-footer [&>a:hover]:text-footer! [&>svg]:text-black"
+            onClick={()=>navigate("/shop")}
+            className="[&>a]:text-footer cursor-pointer [&>a:hover]:text-footer! [&>svg]:text-black"
           >
             Shop
           </BreadcrumbItem>

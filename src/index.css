@@ -2,36 +2,36 @@
 @import "flowbite-react/plugin/tailwindcss";
 @source "../.flowbite-react/class-list.json";
 
-@theme{
-    --color-light: #f4f5f7;
-    --color-light-orange: #fff3e3;
-    --color-dark-orange: #b88e2f;
-    --color-slider: #fcf8f3;
-    --color-font: #333333;
-    --color-light-font: #666666;
-    --color-results : #F9F1E7;
-    --color-cart: #B88E2F38;
-    --color-footer: #9F9F9F;
-    --color-light-footer: #FAF3EA;
-    --color-footer-black : #242424;
-    --color-light-grey: #D9D9D9;
-    --color-grey1: #3a3a3a;
-    --color-grey2: #616161;
-    --color-grey3: #898989;
-    --color-grey4: #b0b0b0;
-    --color-grey5: #d8d8d8;
-    --color-red: #e97171;
-    --color-green: #2ec1ac;
-  }
+@theme {
+  --color-light: #f4f5f7;
+  --color-light-orange: #fff3e3;
+  --color-dark-orange: #b88e2f;
+  --color-slider: #fcf8f3;
+  --color-font: #333333;
+  --color-light-font: #666666;
+  --color-results: #f9f1e7;
+  --color-cart: #b88e2f38;
+  --color-footer: #9f9f9f;
+  --color-light-footer: #faf3ea;
+  --color-footer-black: #242424;
+  --color-light-grey: #d9d9d9;
+  --color-grey1: #3a3a3a;
+  --color-grey2: #616161;
+  --color-grey3: #898989;
+  --color-grey4: #b0b0b0;
+  --color-grey5: #d8d8d8;
+  --color-red: #e97171;
+  --color-green: #2ec1ac;
+}
 
-  @layer components{
-    .grid-btn{
-      @apply h-15 w-15 rounded-lg bg-results flex items-center justify-center cursor-pointer
-    }
-    .input{
-      @apply h-18 rounded-lg border border-footer px-3 outline-0
-    }
+@layer components {
+  .grid-btn {
+    @apply bg-results flex h-15 w-15 cursor-pointer items-center justify-center rounded-lg;
   }
+  .input {
+    @apply border-footer h-18 rounded-lg border px-3 outline-0;
+  }
+}
 
 * {
   box-sizing: border-box;
@@ -45,7 +45,7 @@
   z-index: -1;
 }
 
-.active{
+.active {
   color: #b88e2f;
   text-decoration: 2px #b88e2f underline;
   text-underline-offset: 5px;

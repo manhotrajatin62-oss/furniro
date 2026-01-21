@@ -2,6 +2,8 @@ import DataTable from "react-data-table-component";
 import cart from "../../assets/cart.png";
 import { DeleteCart } from "../../components/Icons";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { ProductContext } from "../../context/ProductContext";
 
 const customStyles = {
   headCells: {
@@ -14,7 +16,8 @@ const customStyles = {
   },
   rows: {
     style: {
-      marginTop: "3rem",
+      marginTop: "1rem",
+      paddingBottom: "1rem",
     },
   },
   cells: {
@@ -25,15 +28,21 @@ const customStyles = {
   },
 };
 
-const columns = [
+
+
+const CartTotal = () => {
+
+  const {cart, removeFromCart}:any = useContext(ProductContext)
+
+  const columns = [
   {
     name: "Product",
     cell: (row: any) => (
-      <div className="flex items-center gap-8 text-xs lg:text-sm">
+      <div className="flex items-center gap-4 text-xs lg:text-sm">
         <div className="bg-cart flex h-20 w-20 items-center justify-center rounded-lg">
-          <img draggable={false} src={row.image} alt="product" />
+          <img draggable={false} className="w-[60%] h-[60%]" src={row.image} alt="product" />
         </div>
-        <h2 className="text-footer">{row.product}</h2>
+        <h2 className="text-footer">{row.title.slice(0,20)}</h2>
       </div>
     ),
     center: true,
@@ -41,7 +50,7 @@ const columns = [
   },
   {
     name: "Price",
-    cell: (row: any) => <p className="text-footer text-sm">{row.price}</p>,
+    cell: (row: any) => <p className="text-footer text-sm">Rs. {row.price}</p>,
     center: true,
   },
   {
@@ -56,27 +65,20 @@ const columns = [
   {
     name: "Subtotal",
     cell: (row: any) => (
-      <div className="flex items-center gap-12 whitespace-nowrap">
-        <p className="text-sm">{row.subtotal}</p>
-        <DeleteCart />
+      <div className="flex w-[80%] items-center justify-between whitespace-nowrap">
+        <p className="text-sm">Rs. {row.price}</p>
+        <DeleteCart onClick={()=>removeFromCart(row.id)}/>
       </div>
     ),
     center: true,
   },
 ];
 
-const data = [
-  {
-    id: 1,
-    image: cart,
-    product: "Asgaard sofa",
-    price: "Rs. 250,000.00",
-    quantity: 1,
-    subtotal: "Rs. 250,000.00",
-  },
-];
+ const totalPrice = cart.reduce(
+  (total:any, item:any) => total + item.price * item.quantity,
+  0
+);
 
-const CartTotal = () => {
   return (
     <section>
       <div className="flex items-start gap-8 px-20 py-18">
@@ -84,7 +86,7 @@ const CartTotal = () => {
         <div className="w-180">
           <DataTable
             columns={columns}
-            data={data}
+            data={cart}
             customStyles={customStyles}
           />
         </div>
@@ -94,8 +96,8 @@ const CartTotal = () => {
             <h1 className="font-semibold text-3xl mt-4">Cart Totals</h1>
 
             <div className="mt-15 flex w-[60%] flex-col gap-8">
-                <h2 className="flex items-center justify-between font-medium">Subtotal<span className="text-footer">Rs. 250,000.00</span></h2>
-                <h2 className="flex items-center justify-between font-medium">Total<span className="font-medium text-xl text-dark-orange">Rs. 250,000.00</span></h2>
+                <h2 className="flex items-center justify-between font-medium">Subtotal<span className="text-footer">Rs. {totalPrice.toFixed(2)}</span></h2>
+                <h2 className="flex items-center justify-between font-medium">Total<span className="font-medium text-xl text-dark-orange">Rs. {totalPrice.toFixed(2)}</span></h2>
             </div>
 
             <Link to={"/checkout"}>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useEffect } from "react";
 import product1 from "../../assets/single-product/product1.png";
 import product2 from "../../assets/single-product/product2.png";
 import product3 from "../../assets/single-product/product3.png";
@@ -10,33 +10,43 @@ import {
   Star,
   Twitter,
 } from "../../components/Icons";
+import { ProductContext } from "../../context/ProductContext";
+import Loader from "../../UI/Loader";
+
+let sizes = ["L", "XL", "XS"];
+let color = [
+  {
+    color: "#816DFA",
+  },
+  {
+    color: "#000000",
+  },
+  {
+    color: "#B88E2F",
+  },
+];
 
 const SingleProductDetails = ({ singleProductData }: any) => {
+  const {
+    quantity,
+    message,
+    handleAddToCart,
+    increment,
+    decrement,
+    removeFromCart,
+    isInCart,
+    setQuantity,
+  }: any = useContext(ProductContext);
 
-  const [quantity, setQuantity] = useState(0);
+  useEffect(() => {
+    setQuantity(0);
+  }, [singleProductData?.id, setQuantity]);
 
-  let sizes = ["L", "XL", "XS"];
-  let color = [
-    {
-      color: "#816DFA",
-    },
-    {
-      color: "#000000",
-    },
-    {
-      color: "#B88E2F",
-    },
-  ];
+  const productId = singleProductData?.id;
+  const inCart = productId ? isInCart(productId) : false;
 
-  function decrement() {
-    if (quantity <= 0) return;
-
-    setQuantity((prev) => prev - 1);
-  }
-
-  function increment() {
-    if (quantity >= 5) return;
-    setQuantity((prev) => prev + 1);
+  if (!singleProductData) {
+    return <Loader />;
   }
 
   return (
@@ -146,20 +156,44 @@ const SingleProductDetails = ({ singleProductData }: any) => {
 
           {/* buttons section */}
           <div className="border-b-light-grey mt-8 flex items-center gap-4 border-b pb-15">
-            <div className="border-footer flex h-16 w-30 items-center justify-between rounded-lg border px-3 text-lg">
-              <button className="cursor-pointer" onClick={decrement}>
-                -
-              </button>
-              <p>{quantity}</p>
-              <button className="cursor-pointer" onClick={increment}>
-                +
-              </button>
+            <div className="relative">
+              <div className="border-footer flex h-16 w-30 items-center justify-between rounded-lg border px-3 text-lg">
+                <button
+                  className="cursor-pointer"
+                  onClick={() => decrement(singleProductData)}
+                >
+                  -
+                </button>
+
+                <p>{quantity}</p>
+
+                <button
+                  className="cursor-pointer"
+                  onClick={() => increment(singleProductData)}
+                >
+                  +
+                </button>
+              </div>
+
+              {message && (
+                <p className="absolute -bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap text-red-500">
+                  {message}
+                </p>
+              )}
             </div>
 
             <div className="flex items-center gap-2">
-              <button className="flex h-16 w-53 cursor-pointer items-center justify-center rounded-2xl border border-black">
-                Add To Cart
+              <button
+                onClick={() =>
+                  inCart
+                    ? removeFromCart(singleProductData.id)
+                    : handleAddToCart(singleProductData)
+                }
+                className="flex h-16 w-53 cursor-pointer items-center justify-center rounded-2xl border border-black"
+              >
+                {inCart ? "Remove from Cart" : "Add To Cart"}
               </button>
+
               <button className="flex h-16 w-53 cursor-pointer items-center justify-center rounded-2xl border border-black">
                 <pre>+ Compare</pre>
               </button>

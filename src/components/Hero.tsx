@@ -1,10 +1,12 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import hero from "../assets/hero.jpg";
 import logo from "../assets/logo.svg";
 
 import { Breadcrumb, BreadcrumbItem } from "flowbite-react";
 
 const Hero = () => {
+
+  const navigate = useNavigate()
   const { pathname } = useLocation();
   let path = pathname.slice(1);
 
@@ -32,13 +34,13 @@ const Hero = () => {
         <h1 className="text-5xl capitalize">{heading}</h1>
         <Breadcrumb className="mt-2" aria-label="Breadcrumbs">
           <BreadcrumbItem
-            href="/"
-            className="[&>a]:text-black [&>a:hover]:text-black! [&>svg]:text-black"
+           onClick={()=>navigate("/")}
+            className="[&>span]:text-black cursor-pointer [&>a:hover]:text-black! [&>svg]:text-black"
           >
             Home
           </BreadcrumbItem>
 
-          <BreadcrumbItem className="capitalize [&>span]:font-light [&>span]:text-black [&>svg]:text-black">
+          <BreadcrumbItem className="capitalize cursor-pointer [&>span]:font-light [&>span]:text-black [&>svg]:text-black">
             {path}
           </BreadcrumbItem>
         </Breadcrumb>

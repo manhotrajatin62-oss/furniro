@@ -20,7 +20,7 @@ const BlogContent = () => {
                 id="search"
                 autoComplete="on"
               />
-              <Search />
+              <Search blog />
             </div>
 
             <div className="mt-11 mr-16 mb-15 ml-19 flex flex-col gap-10">
