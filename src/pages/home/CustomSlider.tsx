@@ -41,7 +41,7 @@ const CustomSlider = () => {
       {/* left button */}
       <button
         onClick={goPrev}
-        className="absolute top-[50%] left-5 z-99 flex h-12 w-12 translate-y-[-50%] cursor-pointer items-center justify-center rounded-full bg-white shadow shadow-gray-400"
+        className="absolute top-[50%] left-5 z-98 flex h-12 w-12 translate-y-[-50%] cursor-pointer items-center justify-center rounded-full bg-white shadow shadow-gray-400"
       >
         <SliderArrow left />
       </button>
@@ -125,7 +125,7 @@ const CustomSlider = () => {
       {/* right button */}
       <button
         onClick={goNext}
-        className="absolute top-[50%] right-12 z-99 flex h-12 w-12 translate-y-[-50%] cursor-pointer items-center justify-center rounded-full bg-white shadow shadow-gray-400"
+        className="absolute top-[50%] right-12 z-98 flex h-12 w-12 translate-y-[-50%] cursor-pointer items-center justify-center rounded-full bg-white shadow shadow-gray-400"
       >
         <SliderArrow />
       </button>

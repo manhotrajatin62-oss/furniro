@@ -1,96 +1,178 @@
 import { HeroArrow } from "../../components/Icons";
 
-const Label = ({ label, name, sm, type }: any) => {
-  return (
-    <label htmlFor={name}>
-      <p className="mb-5 w-fit cursor-pointer">{label}</p>{" "}
-      <input
-        type={type}
-        className={`input ${sm ? "w-52" : "w-full"}`}
-        name={name}
-        id={name}
-        autoComplete="on"
-      />
-    </label>
-  );
-};
+const CheckoutBilling = ({ formData, setFormData, errors, setErrors }: any) => {
+  const fields = [
+    {
+      name: "company",
+      label: "Company Name (Optional)",
+      type: "text",
+      required: false,
+    },
+    {
+      name: "location",
+      label: "Country / Region",
+      type: "select",
+      options: ["Sri Lanka", "India", "Pakistan", "Bangladesh"],
+      required: true,
+    },
+    {
+      name: "address",
+      label: "Street Address",
+      type: "text",
+      required: true,
+    },
+    {
+      name: "town",
+      label: "Town / City",
+      type: "text",
+      required: true,
+    },
+    {
+      name: "province",
+      label: "Province",
+      type: "select",
+      options: [
+        "Western Province",
+        "Northern Province",
+        "Southern Province",
+        "Eastern Province",
+      ],
+      required: true,
+    },
+    {
+      name: "zip",
+      label: "ZIP Code",
+      type: "number",
+      required: true,
+    },
+    {
+      name: "phone",
+      label: "Phone",
+      type: "number",
+      required: true,
+    },
+    {
+      name: "email",
+      label: "Email Address",
+      type: "email",
+      required: true,
+    },
+  ];
 
-const Select = ({ label, name, placeholder, options }: any) => {
-  return (
-    <label htmlFor={name}>
-      <p className="mb-5 w-fit cursor-pointer">{label}</p>
-      <div className="input relative flex cursor-pointer items-center justify-between">
-        <HeroArrow />
-        <select
-          className="text-footer h-full w-full cursor-pointer appearance-none px-3 outline-0 focus:text-black [&>option]:text-black"
-          name={name}
-          id={name}
-        >
-          <option value="" disabled hidden>
-            {placeholder}
-          </option>
-
-          {options?.map((item: any) => (
-            <option key={item} value={item}>
-              {item}
-            </option>
-          ))}
-        </select>
-      </div>
-    </label>
-  );
-};
-
-const CheckoutBilling = () => {
   return (
     <div className="px-15">
       <h1 className="text-4xl font-semibold">Billing details</h1>
 
-      <form className="flex flex-col gap-9">
-        <div className="mt-9 flex items-center gap-8">
-          <Label type={"text"} sm label={"First Name"} name={"first_name"} />
-          <Label type={"text"} sm label={"last Name"} name={"last_name"} />
+      <form className="flex flex-col ">
+
+        {/* first and last name side-by-side */}
+        <div className="mt-9 h-36 flex items-center gap-8">
+          {["first_name", "last_name"].map((item) => (
+            <div key={item} className="w-full">
+              <label htmlFor={item} className="block">
+                <p className="mb-5 w-fit cursor-pointer capitalize">
+                  {item.replace("_", " ")}
+                </p>
+
+                <input
+                  type="text"
+                  value={formData[item]}
+                  onChange={(e) => {
+                    setFormData({ ...formData, [item]: e.target.value });
+                    setErrors({ ...errors, [item]: "" });
+                  }}
+                  className={`input w-full ${
+                    errors[item] ? "border-red-500" : ""
+                  }`}
+                  name={item}
+                  id={item}
+                  autoComplete="on"
+                />
+              </label>
+
+              {errors[item] && (
+                <p className="mt-1 text-sm text-red-500">{errors[item]}</p>
+              )}
+            </div>
+          ))}
         </div>
 
-        <Label
-          type={"text"}
-          label={"Company Name (Optional)"}
-          name={"company"}
-        />
+        {/* company name and so on */}
 
-        <Select
-          label={"Country / Region"}
-          name={"location"}
-          placeholder={"Sri Lanka"}
-          options={["Sri Lanka", "India", "Pakistan", "Bangladesh"]}
-        />
+        {fields.map((field) => (
+          <div className="w-full h-36" key={field.name}>
+            {field.type !== "select" && (
+              <label htmlFor={field.name} className="block">
+                <p className="mb-5 w-fit cursor-pointer capitalize">
+                  {field.label}
+                </p>
 
-        <Label type={"text"} label={"Street Address"} name={"address"} />
+                <input
+                  type={field.type}
+                  value={formData[field.name]}
+                  onChange={(e) => {
+                    setFormData({
+                      ...formData,
+                      [field.name]: e.target.value,
+                    });
+                    setErrors({ ...errors, [field.name]: "" });
+                  }}
+                  className={`input w-full ${
+                    errors[field.name] ? "border-red-500" : ""
+                  }`}
+                  name={field.name}
+                  id={field.name}
+                  autoComplete="on"
+                />
+              </label>
+            )}
 
-        <Label type={"text"} label={"Town / City"} name={"town"} />
+            {field.type === "select" && (
+              <label htmlFor={field.name}>
+                <p className="mb-5 w-fit cursor-pointer">{field.label}</p>
+                <div
+                  className={`${
+                    errors[field.name] ? "border-red-500" : ""
+                  } input relative flex cursor-pointer items-center justify-between`}
+                >
+                  <HeroArrow />
+                  <select
+                    value={formData[field.name]}
+                    name={field.name}
+                    id={field.name}
+                    onChange={(e) =>{
+                      setFormData({
+                        ...formData,
+                        [field.name]: e.target.value,
+                      });
+                      setErrors({ ...errors, [field.name]: "" });
+                    }}
+                    className="text-footer h-full w-full cursor-pointer appearance-none px-3 outline-0 focus:text-black [&>option]:text-black"
+                  >
+                    <option value="" disabled hidden>
+                      {field?.options?.[0]}
+                    </option>
 
-        <Select
-          label={"Province"}
-          name={"province"}
-          placeholder={"Western Province"}
-          options={[
-            "Western Province",
-            "Northern Province",
-            "Southern Province",
-            "Eastern Province",
-          ]}
-        />
+                    {field?.options?.map((opt: any) => (
+                      <option key={opt} value={opt}>
+                        {opt}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </label>
+            )}
 
-        <Label type={"number"} label={"ZIP code"} name={"zip-code"} />
-
-        <Label type={"number"} label={"Phone"} name={"phone"} />
-
-        <Label type={"email"} label={"Email address"} name={"email"} />
+            {errors[field.name] && (
+              <p className="mt-1 text-sm text-red-500">{errors[field.name]}</p>
+            )}
+          </div>
+        ))}
 
         <input
           type="text"
           placeholder="Additional information"
-          className="input w-full px-6"
+          className="input mt-2 w-full px-6"
           name="info"
           id="info"
           autoComplete="on"

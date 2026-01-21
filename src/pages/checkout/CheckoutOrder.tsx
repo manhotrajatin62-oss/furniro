@@ -1,4 +1,6 @@
-const CheckoutOrder = () => {
+import { FaCheck } from "react-icons/fa";
+
+const CheckoutOrder = ({showCheck, onSubmit}:any) => {
   return (
     <section className="w-full">
       <div className="w-full px-9 flex flex-col items-center py-21">
@@ -7,12 +9,12 @@ const CheckoutOrder = () => {
             Product<span>Subtotal</span>
           </p>
 
-          <p className="flex items-center justify-between">
+          <div className="flex items-center justify-between">
             <p className="text-footer">
               Asgaard sofa <span className="ml-2 text-black">X 1</span>
             </p>{" "}
             <span className="font-light">Rs. 250,000.00</span>
-          </p>
+          </div>
 
           <p className="flex items-center justify-between">
             Subtotal<span className="font-light">Rs. 250,000.00</span>
@@ -52,7 +54,10 @@ const CheckoutOrder = () => {
 
         <p className="mt-6 text-sm font-light text-justify">Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our <span className="font-semibold">privacy policy.</span></p>
 
-         <button className="text-xl py-3 px-14 mt-10 cursor-pointer border rounded-2xl border-black">Place Order</button>
+         <button  onClick={onSubmit} className="text-xl py-3 px-14 mt-10 cursor-pointer border rounded-2xl border-black">Place Order</button>
+         {
+          showCheck && <FaCheck className="mt-10" size={30} color="green"/>
+         }
       </div>
     </section>
   );
