@@ -1,8 +1,9 @@
 import DataTable from "react-data-table-component";
 import { DeleteCart } from "../../components/Icons";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ProductContext } from "../../context/ProductContext";
+import ModalPage from "../../UI/ModalPage";
 
 const customStyles = {
   headCells: {
@@ -31,7 +32,9 @@ const customStyles = {
 
 const CartTotal = () => {
 
-  const {cart, removeFromCart}:any = useContext(ProductContext)
+  const {cart, removeFromCart, setOpenModal}:any = useContext(ProductContext)
+
+  const [rowData, setRowData] = useState<any>()
 
   const columns = [
   {
@@ -64,10 +67,12 @@ const CartTotal = () => {
   {
     name: "Subtotal",
     cell: (row: any) => (
+      
       <div className="flex w-[80%] items-center justify-between whitespace-nowrap">
         <p className="text-sm">Rs. {row.price}</p>
-        <DeleteCart onClick={()=>removeFromCart(row.id)}/>
+        <DeleteCart onClick={()=>{setOpenModal(true); setRowData(row)}}/>
       </div>
+
     ),
     center: true,
   },
@@ -79,6 +84,7 @@ const CartTotal = () => {
 );
 
   return (
+    <>
     <section>
       <div className="flex items-start gap-8 px-20 py-18">
         {/* cart items */}
@@ -105,6 +111,11 @@ const CartTotal = () => {
         </div>
       </div>
     </section>
+
+     <ModalPage onClick={()=>{removeFromCart(rowData?.id); setOpenModal(false)}}>
+        {"remove" + " " + rowData?.title}
+    </ModalPage>
+    </>
   );
 };
 

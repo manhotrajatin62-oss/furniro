@@ -1,12 +1,13 @@
 import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { LoginContext } from "../context/LoginContext";
+import { FacebookLogin, GoogleLogin } from "../components/Icons";
 
 const getPasswordBorderClass = (status: any) => {
-  if (status === "error") return "border-red-500";
-  if (status === "weak") return "border-amber-700";
-  if (status === "medium") return "border-orange-500";
-  return "border-[#C7CCD0]";
+  if (status === "error") return "border-red-500 focus:border-red-500";
+  if (status === "weak") return "border-amber-700 focus:border-amber-700";
+  if (status === "medium") return "border-orange-500 focus:border-orange-500";
+  return "border-border focus:border-black";
 };
 
 const getPasswordTextColorClass = (status: any) => {
@@ -19,7 +20,7 @@ const getPasswordTextColorClass = (status: any) => {
 const PasswordVisibilityToggle = ({ isVisible, onToggle, hasValue }: any) => {
   if (!hasValue) return null;
   return (
-    <div className="absolute top-2 right-2 lg:top-[50%] lg:right-3">
+    <div className="absolute top-7.5 right-2 lg:top-[50%] lg:right-3">
       {isVisible ? (
         <FaEye
           color="#7B809A"
@@ -73,25 +74,31 @@ const LoginForm = () => {
     setIsLogin,
   }: any = useContext(LoginContext);
 
-  const [toggleSwitch, setToggleSwitch] = useState(false);
-
   const passwordBorderClass = getPasswordBorderClass(passwordStatus.status);
   const passwordTextColorClass = getPasswordTextColorClass(
     passwordStatus.status,
   );
 
   return (
-    <section className="flex w-full ml-10 flex-col gap-2 rounded-xl  p-4 xl:w-fit">
+    <section className="absolute sm:w-fit bg-white/70 w-[90%] top-[50%] left-[50%] translate-[-50%]  lg:static lg:translate-0   flex mx-auto  flex-col gap-2 rounded-xl p-4 xl:w-fit">
       {/* heading */}
       <div className="flex flex-col items-start gap-3">
         <h1 className="text-lg font-semibold lg:text-4xl">
-          {isLogin ? <>Welcome<br/>back!</> : "Sign Up"}
+          {isLogin ? (
+            <>
+              Welcome
+              <br />
+              back!
+            </>
+          ) : (
+            "Sign Up"
+          )}
         </h1>
       </div>
 
       {/* name input */}
       {!isLogin && (
-        <div className="mx-auto h-12 w-full sm:mt-4 sm:w-80 lg:mt-10 lg:h-15 lg:w-fit xl:mt-14.5">
+        <div className="mx-auto w-full h-18 mt-2 sm:mt-4 sm:w-80 lg:mt-5 lg:h-20 lg:w-full xl:mt-4">
           <label htmlFor="name">
             <p className="form-label">Name</p>
             <input
@@ -104,8 +111,8 @@ const LoginForm = () => {
               placeholder="Name"
               className={`form-input ${
                 nameStatus.status === "error"
-                  ? "border-red-500"
-                  : "border-[#C7CCD0]"
+                  ? "border-red-500 focus:border-red-500"
+                  : "border-border focus:border-black"
               }`}
             />
           </label>
@@ -119,7 +126,7 @@ const LoginForm = () => {
 
       {/* email input */}
       <div
-        className={`${isLogin ? "mt-5 lg:mt-10 xl:mt-14.5" : "mt-0"} mx-auto h-12 w-full sm:w-80 lg:h-20 lg:w-fit`}
+        className={`${isLogin ? "mt-2 lg:mt-5 xl:mt-5" : "mt-0"} mx-auto h-18  w-full sm:w-80 lg:h-20 lg:w-full`}
       >
         <label htmlFor="email">
           <p className="form-label">Email</p>
@@ -133,8 +140,8 @@ const LoginForm = () => {
             placeholder="Enter your email address"
             className={`form-input ${
               emailStatus.status === "error"
-                ? "border-red-500"
-                : "border-[#C7CCD0]"
+                ? "border-red-500 focus:border-red-500"
+                : "border-border focus:border-black"
             }`}
           />
         </label>
@@ -146,7 +153,7 @@ const LoginForm = () => {
       </div>
 
       {/* password input */}
-      <div className="relative mx-auto h-14 w-full sm:h-12 sm:w-80 lg:h-20 lg:w-fit">
+      <div className="relative mx-auto h-20 w-full sm:h-18 sm:w-80 lg:h-20 lg:w-fit">
         <div>
           <label htmlFor="password">
             <p className="form-label">Password</p>
@@ -154,7 +161,7 @@ const LoginForm = () => {
               value={password}
               onChange={handlePasswordChange}
               placeholder={isLogin ? "Enter your password" : "Enter password"}
-              className={`${passwordBorderClass} pr-10 pl-4 form-input`}
+              className={`${passwordBorderClass} form-input pr-10 pl-4`}
               type={showHidePassword ? "text" : "password"}
               name="password"
               id="password"
@@ -176,9 +183,16 @@ const LoginForm = () => {
         )}
       </div>
 
+      {/* forget your password */}
+      {isLogin && (
+        <button className="cursor-pointer self-end text-xs underline">
+          Forgot your password?
+        </button>
+      )}
+
       {/* confirm password input */}
       {!isLogin && (
-        <div className="relative mx-auto h-12 w-full sm:w-80 lg:h-15 lg:w-fit">
+        <div className="relative mx-auto h-18 w-full sm:w-80 lg:h-20 lg:w-full">
           <div>
             <label htmlFor="confirmPassword">
               <p className="form-label">Confirm Password</p>
@@ -186,7 +200,11 @@ const LoginForm = () => {
                 value={confirmPassword}
                 onChange={handleConfirmPasswordChange}
                 placeholder="Confirm password"
-                className={`${confirmPasswordStatus.status === "error" ? "border-red-500" : "border-[#C7CCD0]"} pr-10 pl-4 form-input`}
+                className={`${
+                  confirmPasswordStatus.status === "error"
+                    ? "border-red-500 focus:border-red-500"
+                    : "border-border focus:border-black"
+                } form-input pr-10 pl-4`}
                 type={showHidePassword ? "text" : "password"}
                 name="confirmPassword"
                 id="confirmPassword"
@@ -208,41 +226,52 @@ const LoginForm = () => {
         </div>
       )}
 
-      {/* remember me button */}
-
-      <div className="mt-2 flex items-center gap-2 sm:ml-5 lg:ml-0">
-        <button
-          onClick={() => setToggleSwitch(!toggleSwitch)}
-          className={`relative inline-flex h-3 w-8 cursor-pointer items-center rounded-full transition-colors duration-300 lg:h-4 lg:w-9 ${toggleSwitch ? "bg-[#DA1F63]" : "bg-gray-300"}`}
-        >
-          <span
-            className={`absolute h-4 w-4 rounded-full border border-gray-400 bg-white shadow-xl/70 shadow-black transition-all duration-300 lg:h-5 lg:w-5 ${toggleSwitch ? "translate-x-5" : "translate-x-0"} -top-0.5`}
-          />
-        </button>
-        <p className="text-grey text-xs lg:text-sm">Remember me</p>
-      </div>
-
       {/* sign in button */}
 
       <button
         onClick={handleSubmit}
-        className="mt-4 h-10 w-full cursor-pointer rounded-lg bg-linear-to-b from-[#E93B77] to-[#DA1F63] p-2 text-xs font-bold text-white lg:mt-11"
+        className="bg-dark-orange mt-2 h-10 w-full cursor-pointer p-2 text-xs font-bold text-white lg:mt-4"
       >
-        {isLogin ? "SIGN IN" : "SIGN UP"}
+        {isLogin ? "LOG IN" : "SIGN UP"}
       </button>
+
+      {/* google facebook login buttons */}
+      {
+        isLogin && (
+
+         <>
+          <div className="relative flex items-center gap-2 justify-center text-grey3 text-xs lg:text-sm my-2 lg:my-4">
+            <div className="h-px w-full bg-grey3" />
+            <p>or</p>
+            <div className="h-px w-full bg-grey3" />
+          </div>
+
+          <div className="flex w-full gap-4 lg:gap-8 items-center">
+            
+            <button className="flex w-full text-xs lg:text-sm cursor-pointer gap-4 p-3 border border-border bg-white rounded items-center">
+              <FacebookLogin/>
+              Facebook
+            </button>
+            <button className="flex w-full text-xs lg:text-sm cursor-pointer gap-4 p-3 border border-border bg-white rounded items-center">
+              <GoogleLogin/>
+              Google
+            </button>
+          </div>
+
+         </>
+        )
+      }
 
       {/* sign up button */}
 
-      <div className="text-grey mx-auto mt-2 flex items-center gap-2 text-xs lg:mt-8 lg:text-sm">
-        <p>
-          {isLogin ? "Don't" : "Already"} have an account?{" "}
-          <button
-            onClick={() => setIsLogin(!isLogin)}
-            className="cursor-pointer font-bold text-[#DA1F63]"
-          >
-            {isLogin ? "Sign Up" : "Sign In"}
-          </button>
-        </p>
+      <div className="text-grey w-full mx-auto mt-2 flex flex-col items-center gap-2 text-xs lg:mt-8 lg:text-sm">
+        <p className="text-grey2">{isLogin ? "Don't" : "Already"} have an account? </p>
+        <button
+          onClick={() => setIsLogin(!isLogin)}
+          className="bg-light-button h-10 mt-2 w-full cursor-pointer p-2 font-semibold text-xs text-black"
+        >
+          {isLogin ? "Create Account" : "Log In"}
+        </button>
       </div>
     </section>
   );

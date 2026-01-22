@@ -1,4 +1,5 @@
 import { createContext, useEffect, useMemo, useState } from "react";
+import { toast } from "react-toastify";
 
 export const ProductContext = createContext({});
 
@@ -9,8 +10,8 @@ const ProductContextProvider = ({ children }: any) => {
   const [quantity, setQuantity] = useState(0); // how many products to add in cart
   const [message, setMessage] = useState(""); // validation for the quantity of products
   const [hasLoaded, setHasLoaded] = useState(false);
-
-  const [cartBubble, setCartBubble] = useState(false)
+  const [openModal, setOpenModal] = useState(false);
+  
 
   // fetch products
   async function fetchData() {
@@ -41,8 +42,6 @@ const ProductContextProvider = ({ children }: any) => {
 
       return [...prev, { ...singleProductData, quantity }];
     });
-
-    setCartBubble(true)
   }
 
   // increment
@@ -92,6 +91,7 @@ const ProductContextProvider = ({ children }: any) => {
   // remove from cart
   function removeFromCart(productId: number) {
     setCart((prev) => prev.filter((item) => item.id !== productId));
+    toast.error("Item removed successfully")
   }
 
   // check if product exists in cart
@@ -111,17 +111,6 @@ const ProductContextProvider = ({ children }: any) => {
 
     return () => clearTimeout(timer);
   }, [message]);
-  
-  // auto hide bubble
-  useEffect(() => {
-    if (!cart) return;
-
-    const timer = setTimeout(() => {
-      setCartBubble(false);
-    }, 3000);
-
-    return () => clearTimeout(timer);
-  }, [cart]);
 
   // load cart on page reload
   useEffect(() => {
@@ -153,12 +142,13 @@ const ProductContextProvider = ({ children }: any) => {
       isInCart,
       setQuantity,
       message,
-      cartBubble,
       handleAddToCart,
       increment,
       decrement,
+      openModal,
+      setOpenModal
     }),
-    [productData, cart, toggleCart, quantity, message, cartBubble],
+    [productData, cart, toggleCart, quantity, message, openModal],
   );
 
   return (

@@ -9,7 +9,7 @@ const LoginPage = () => {
       {/* Login form section */}
       <div className="flex w-full items-center justify-between ">
         <LoginForm />
-        <div className="h-[90%] w-[60%] ">
+        <div className="w-full h-full lg:h-[90%] lg:w-[60%] ">
           <img src={home} className="h-full w-full object-cover" alt="home" />
         </div>
       </div>

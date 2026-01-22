@@ -6,9 +6,10 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { ProductContext } from "../context/ProductContext";
 import { IoExitOutline } from "react-icons/io5";
 import { toast } from "react-toastify";
+import ModalPage from "../UI/ModalPage";
 
 const Navbar = () => {
-  const { toggleCart, setToggleCart, cartBubble }: any =
+  const { toggleCart, setToggleCart, setOpenModal, cart }: any =
     useContext(ProductContext);
 
   const [showSearch, setShowSearch] = useState(false);
@@ -20,12 +21,18 @@ const Navbar = () => {
   function clearStorage() {
     localStorage.clear();
     navigate("/login");
+    setOpenModal(false);
     toast.error("Logout Successful");
   }
 
   const [showDropdown, setShowDropdown] = useState(false);
 
   const menuRef: any = useRef(null);
+
+  const cartCount = cart.reduce(
+    (total: any, item: any) => total + item.quantity,
+    0,
+  );
 
   useEffect(() => {
     function handleClickOutside(e: any) {
@@ -39,81 +46,87 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="fixed top-0 right-0 left-0 z-99 bg-white">
-      <section className="flex h-full items-center justify-between py-7 pr-25 pl-13.5">
-        {/* brand logo*/}
-        <div className="flex cursor-pointer items-center gap-1">
-          <img draggable={false} src={logo} alt="brand logo" />
-          <h1 className="text-3xl font-bold">Furniro</h1>
-        </div>
-
-        {/* nav list */}
-        <ul className="flex items-center gap-10">
-          <NavLink to={"/"}>
-            <li className="cursor-pointer">Home</li>
-          </NavLink>
-          <NavLink to={"/shop"}>
-            <li className="cursor-pointer">Shop</li>
-          </NavLink>
-          <NavLink to={"/contact"}>
-            <li className="cursor-pointer">Contact</li>
-          </NavLink>
-          <NavLink to={"/blog"}>
-            <li className="cursor-pointer">Blog</li>
-          </NavLink>
-        </ul>
-
-        {/* nav icons */}
-        <div className="flex items-center gap-10">
-          <div
-            className={`border-light-grey flex items-center overflow-hidden rounded-4xl border transition-all duration-300 ${showSearch ? "w-50 px-3 py-0.5 opacity-100" : "w-0 border-0 px-0 py-0 opacity-0"} `}
-          >
-            <input
-              placeholder="Search"
-              type="search"
-              className="text-grey1 w-full px-1 text-sm outline-0"
-              name="search"
-              id="search"
-              autoComplete="on"
-            />
-            <Search />
+    <>
+      <nav className="fixed top-0 right-0 left-0 z-99 bg-white">
+        <section className="flex h-full items-center justify-between py-7 pr-25 pl-13.5">
+          {/* brand logo*/}
+          <div className="flex cursor-pointer items-center gap-1">
+            <img draggable={false} src={logo} alt="brand logo" />
+            <h1 className="text-3xl font-bold">Furniro</h1>
           </div>
-          <div className="relative">
-            <User setShowDropdown={setShowDropdown} />
+
+          {/* nav list */}
+          <ul className="flex items-center gap-10">
+            <NavLink to={"/"}>
+              <li className="cursor-pointer">Home</li>
+            </NavLink>
+            <NavLink to={"/shop"}>
+              <li className="cursor-pointer">Shop</li>
+            </NavLink>
+            <NavLink to={"/contact"}>
+              <li className="cursor-pointer">Contact</li>
+            </NavLink>
+            <NavLink to={"/blog"}>
+              <li className="cursor-pointer">Blog</li>
+            </NavLink>
+          </ul>
+
+          {/* nav icons */}
+          <div className="flex items-center gap-10">
             <div
-              ref={menuRef}
-              className={`${showDropdown ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"} absolute left-[50%] flex translate-x-[-50%] flex-col items-center bg-white p-4 shadow shadow-gray-400 transition-opacity duration-300`}
+              className={`border-light-grey flex items-center overflow-hidden rounded-4xl border transition-all duration-300 ${showSearch ? "w-50 px-3 py-0.5 opacity-100" : "w-0 border-0 px-0 py-0 opacity-0"} `}
             >
-              <p className="whitespace-nowrap">
-                Hello{" "}
-                <span className="text-dark-orange">
-                  {user.email.split("@")[0]}
-                </span>
-              </p>
-              <div className="bg-light-grey my-2 h-0.5 w-full" />
-              <button
-                onClick={clearStorage}
-                className="flex cursor-pointer items-center gap-2 text-red-500"
+              <input
+                placeholder="Search"
+                type="search"
+                className="text-grey1 w-full px-1 text-sm outline-0"
+                name="search"
+                id="search"
+                autoComplete="on"
+              />
+              <Search />
+            </div>
+            <div className="relative">
+              <User setShowDropdown={setShowDropdown} />
+              <div
+                ref={menuRef}
+                className={`${showDropdown ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"} absolute left-[50%] flex translate-x-[-50%] flex-col items-center bg-white p-4 shadow shadow-gray-400 transition-opacity duration-300`}
               >
-                <IoExitOutline size={20} /> Logout
-              </button>
+                <p className="whitespace-nowrap">
+                  Hello{" "}
+                  <span className="text-dark-orange">
+                    {user?.name ? user.name : user.email.split("@")[0]}
+                  </span>
+                </p>
+                <div className="bg-light-grey my-2 h-0.5 w-full" />
+                <button
+                  onClick={() => setOpenModal(true)}
+                  className="flex cursor-pointer items-center gap-2 text-red-500"
+                >
+                  <IoExitOutline size={20} /> Logout
+                </button>
+              </div>
+            </div>
+            <NavSearch setShowSearch={setShowSearch} />
+            <Heart />
+            <div className="relative">
+              <CartSvg setToggleCart={setToggleCart} />
+              {cartCount > 0 && (
+                <div className="bg-red absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full text-sm text-white">
+                  {cartCount}
+                </div>
+              )}
             </div>
           </div>
-          <NavSearch setShowSearch={setShowSearch} />
-          <Heart />
-          <div className="relative">
-            <CartSvg setToggleCart={setToggleCart} />
-            {cartBubble && (
-              <div className="bg-red absolute -top-1 -right-1 h-4 w-4 rounded-full" />
-            )}
-          </div>
-        </div>
 
-        {/* cart section */}
+          {/* cart section */}
 
-        <Cart toggleCart={toggleCart} setToggleCart={setToggleCart} />
-      </section>
-    </nav>
+          <Cart toggleCart={toggleCart} setToggleCart={setToggleCart} />
+        </section>
+      </nav>
+
+      <ModalPage onClick={clearStorage}>{"Logout"}</ModalPage>
+    </>
   );
 };
 
