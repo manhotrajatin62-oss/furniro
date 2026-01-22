@@ -23,16 +23,16 @@ const Cart = ({ toggleCart, setToggleCart }: any) => {
       )}
 
       <section
-        className={`${toggleCart ? "scale-100" : "scale-0"} fixed top-0 right-0 z-99 flex h-150 w-104 origin-top-right flex-col bg-white transition-[scale] duration-200`}
+        className={`${toggleCart ? "scale-100" : "scale-0"} overflow-y-auto fixed top-0 right-0 z-99 flex lg:h-150 w-full h-full sm:w-104  origin-top-right flex-col bg-white transition-[scale] duration-200`}
       >
-        <div className="grow pt-7  pl-7">
+        <div className="grow pt-4 pl-4 lg:pt-7 lg:pl-7">
         {/* cart heading */}
-          <div className="flex items-center pr-10 justify-between">
-            <h1 className="text-2xl font-semibold">Shopping Cart</h1>
+          <div className="flex items-center pr-4 lg:pr-10 justify-between">
+            <h1 className="text-xl lg:text-2xl font-semibold">Shopping Cart</h1>
             <ShoppingBag setToggleCart={setToggleCart} />
           </div>
 
-          <hr className="text-light-grey mt-6 mb-10 w-[85%]" />
+          <hr className="text-light-grey my-6 lg:mt-6 lg:mb-10 w-[85%]" />
 
           {/* cart items */}
           <div className="flex flex-col mr-4 overflow-y-auto h-80 gap-5">
@@ -43,19 +43,21 @@ const Cart = ({ toggleCart, setToggleCart }: any) => {
               </p>
             ) : (
               cart?.map((item:any) => (
-                <div key={item?.id} className="flex items-center gap-8">
-                  <div className="bg-cart flex h-26 w-26 items-center justify-center rounded-lg">
-                    <img draggable={false} className="w-[60%] h-[60%]" src={item?.image} alt="cart" />
+                <div key={item?.id} className="flex items-center justify-between gap-4 lg:gap-8">
+                  <div className="flex items-center gap-6">
+                    <div className="bg-cart flex w-18 h-18 lg:h-26 lg:w-26 items-center justify-center rounded-lg">
+                    <img draggable={false} className="w-[60%] h-[60%] object-contain" src={item?.image} alt="cart" />
                   </div>
 
-                  <div className="mr-7.5">
-                    <h2>{item?.title.slice(0,20)}</h2>
+                  <div className="w-40">
+                    <h2 className="text-sm lg:text-base">{item?.title.slice(0,20)}</h2>
                     <pre className="font-light">
                       {item?.quantity}{"  "}X{"  "} 
                       <span className="text-dark-orange text-sm font-medium">
                        Rs. {item?.price}
                       </span>
                     </pre>
+                  </div>
                   </div>
 
                   <CartCross onClick={()=>removeFromCart(item?.id)}/>
@@ -77,7 +79,7 @@ const Cart = ({ toggleCart, setToggleCart }: any) => {
 
           <hr className="text-light-grey mt-6" />
 
-          <div className="flex items-center gap-3 p-6.5">
+          <div className="flex flex-wrap lg:flex-nowrap items-center gap-3 p-3 justify-center lg:p-6.5">
             <Link to={"/cart"}>
               <button
                 onClick={() => setToggleCart(false)}

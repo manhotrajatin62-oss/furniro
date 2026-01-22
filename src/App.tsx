@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import AppLayout from "./layout/AppLayout";
 import Shop from "./pages/shop/Shop";
-import { lazy } from "react";
 import NotFound from "./pages/NotFound";
 import SingleProduct from "./pages/single-product/SingleProduct";
 import CartPage from "./pages/cart/CartPage";
@@ -13,8 +12,7 @@ import PublicRoute from "./routes/PublicRoute";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-const Home = lazy(() => import("./pages/home/Home"));
+import Home from "./pages/home/Home";
 
 const App = () => {
   return (

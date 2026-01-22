@@ -10,15 +10,15 @@ import furn9 from "../../assets/home/furn9.png";
 
 const HomeFurniture = () => {
   return (
-    <section className="mt-17 mb-12 flex flex-col items-center">
+    <section className="mt-17 mb-12 px-4 lg:px-0 flex flex-col items-center">
       {/* heading */}
       <div className="text-center">
-        <h2 className="text-grey2 font-semibold">Share your setup with</h2>
-        <h1 className="text-grey1 mt-2 text-4xl font-bold">#FuniroFurniture</h1>
+        <h2 className="text-grey2 text-sm lg:text-base font-semibold">Share your setup with</h2>
+        <h1 className="text-grey1 mt-2 text-2xl lg:text-4xl font-bold">#FuniroFurniture</h1>
       </div>
 
       {/* images layout */}
-      <div className="-mt-6 flex items-center gap-4">
+      <div className="lg:-mt-6 mt-4 flex flex-col sm:flex-row items-center gap-4">
         <div className="flex flex-col gap-4">
           <div className="flex items-end justify-end gap-4">
             <img draggable={false} className="w-[15%]" src={furn1} alt="#FuniroFurniture" />

@@ -75,9 +75,8 @@ export const Heart = () => (
   </svg>
 );
 
-export const CartSvg = ({ setToggleCart }: any) => (
-  <svg
-    onClick={() => setToggleCart(true)}
+export const CartSvg = () => (
+  <svg   
     key={"cart"}
     className="cursor-pointer"
     width="28"

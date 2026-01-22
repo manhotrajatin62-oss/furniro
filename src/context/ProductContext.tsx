@@ -91,7 +91,6 @@ const ProductContextProvider = ({ children }: any) => {
   // remove from cart
   function removeFromCart(productId: number) {
     setCart((prev) => prev.filter((item) => item.id !== productId));
-    toast.error("Item removed successfully")
   }
 
   // check if product exists in cart
