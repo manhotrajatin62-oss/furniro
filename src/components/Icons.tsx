@@ -182,9 +182,9 @@ export const RightArrow = () => (
 
 export const Trophy = () => (
   <svg
-    width="60"
+    
     key="trophy"
-    height="60"
+   className="lg:h-15 lg:w-15 h-10 w-10"
     viewBox="0 0 60 60"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -199,8 +199,7 @@ export const Trophy = () => (
 export const Warranty = () => (
   <svg
     key={"warranty"}
-    width="60"
-    height="60"
+     className="lg:h-15 lg:w-15 h-10 w-10"
     viewBox="0 0 60 60"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -222,8 +221,7 @@ export const Warranty = () => (
 export const Shipping = () => (
   <svg
     key={"shipping"}
-    width="60"
-    height="60"
+    className="lg:h-15 lg:w-15 h-10 w-10"
     viewBox="0 0 60 60"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -245,8 +243,7 @@ export const Shipping = () => (
 export const Support = () => (
   <svg
     key={"support"}
-    width="60"
-    height="60"
+     className="lg:h-15 lg:w-15 h-10 w-10"
     viewBox="0 0 60 60"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"

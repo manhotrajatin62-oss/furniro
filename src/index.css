@@ -28,7 +28,7 @@
 
 @layer components {
   .grid-btn {
-    @apply bg-results flex h-15 w-15 cursor-pointer items-center justify-center rounded-lg;
+    @apply bg-results flex h-10 w-10 lg:h-15 lg:w-15 cursor-pointer items-center justify-center rounded-lg;
   }
   .input {
     @apply border-footer h-18 rounded-lg border px-3 outline-0 focus:border-black;

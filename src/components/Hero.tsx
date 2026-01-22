@@ -21,7 +21,7 @@ const Hero = () => {
   else if (pathname === "/blog") heading = "Blog";
 
   return (
-    <section className="relative mt-20 flex h-79 items-center justify-center overflow-hidden">
+    <section className="relative mt-10 lg:mt-20 flex h-79 items-center justify-center overflow-hidden">
       <img draggable={false}
         src={hero}
         className="h-fit w-fit opacity-50 blur-[.1875rem]"
@@ -31,7 +31,7 @@ const Hero = () => {
         {pathname !== "/shop" && (
           <img  draggable={false} className="h-15 w-15" src={logo} alt="logo" />
         )}
-        <h1 className="text-5xl capitalize">{heading}</h1>
+        <h1 className="text-3xl lg:text-5xl capitalize">{heading}</h1>
         <Breadcrumb className="mt-2" aria-label="Breadcrumbs">
           <BreadcrumbItem
            onClick={()=>navigate("/")}

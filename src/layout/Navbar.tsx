@@ -1,7 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import Cart from "../components/Cart";
-import { CartSvg, Heart, NavSearch, Search, User } from "../components/Icons";
+import { CartSvg, Heart, NavSearch, Search } from "../components/Icons";
 import { useContext, useState } from "react";
 import { ProductContext } from "../context/ProductContext";
 import { IoClose, IoMenu } from "react-icons/io5";
