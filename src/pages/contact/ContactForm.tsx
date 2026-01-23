@@ -12,9 +12,9 @@ const Label = ({
   error,
 }: any) => {
   return (
-    <div className="h-36 w-full">
+    <div className="h-25 xl:h-36 w-full">
       <label htmlFor={name} className="block">
-        <p className="mb-5 w-fit cursor-pointer">{label}</p>
+        <p className="mb-2 xl:mb-5 text-sm xl:text-base w-fit cursor-pointer">{label}</p>
 
         <input
           type={type}
@@ -27,7 +27,7 @@ const Label = ({
           className={`input w-full px-7 ${error ? "border-red-500" : ""}`}
         />
 
-        {error && <p className="mt-1 text-sm text-red-500">{error}</p>}
+        {error && <p className="mt-1 text-xs xl:text-sm text-red-500">{error}</p>}
       </label>
     </div>
   );
@@ -80,25 +80,25 @@ const ContactForm = () => {
   };
 
   return (
-    <section className="mx-47">
+    <section className="xl:mx-47 lg:mx-20 p-5 xl:p-0">
       {/* heading */}
-      <div className="mt-25 text-center">
-        <h1 className="text-4xl font-semibold">Get In Touch With Us</h1>
-        <p className="text-footer mx-auto mt-2 w-161">
+      <div className="xl:mt-25 mt-10  text-center">
+        <h1 className="text-2xl xl:text-4xl font-semibold">Get In Touch With Us</h1>
+        <p className="text-footer text-sm xl:text-base mx-auto mt-2 md:w-161">
           For More Information About Our Product & Services. Please Feel Free To
           Drop Us An Email. Our Staff Always Be There To Help You Out. Do Not
           Hesitate!
         </p>
       </div>
 
-      <div className="mt-3 flex items-start gap-7">
+      <div className="mt-3 flex flex-col  sm:flex-row items-start gap-7">
         {/* address, phone section */}
-        <div className="mt-28 flex h-134 min-w-98 flex-col gap-11">
+        <div className="xl:mt-28 w-full mt-10 flex xl:h-134 xl:min-w-98 flex-col gap-11">
           <div className="flex items-start gap-7">
             <Location />
             <div className="mt-2">
-              <h1 className="text-2xl font-medium">Address</h1>
-              <p className="w-53">
+              <h1 className="text-xl lg:text-2xl font-medium">Address</h1>
+              <p className="text-sm md:text-base w-53">
                 236 5th SE Avenue, New York NY10000, United States
               </p>
             </div>
@@ -107,8 +107,8 @@ const ContactForm = () => {
           <div className="flex items-start gap-7">
             <Phone />
             <div>
-              <h1 className="text-2xl font-medium">Phone</h1>
-              <p className="w-53">
+              <h1 className="text-xl lg:text-2xl font-medium">Phone</h1>
+              <p className="text-sm md:text-base w-53">
                 Mobile: +(84) 546-6789 Hotline: +(84) 456-6789
               </p>
             </div>
@@ -117,8 +117,8 @@ const ContactForm = () => {
           <div className="flex items-start gap-7">
             <Clock />
             <div>
-              <h1 className="text-2xl font-medium">Working Time</h1>
-              <p className="w-53">
+              <h1 className="text-xl lg:text-2xl font-medium">Working Time</h1>
+              <p className="text-sm md:text-base w-53">
                 Monday-Friday: 9:00 - 22:00 <br />
                 Saturday-Sunday: 9:00 - 21:00
               </p>
@@ -128,7 +128,7 @@ const ContactForm = () => {
 
         {/* form section */}
         <div className="w-full">
-          <form onSubmit={handleSubmit} className="mt-29 mb-15 flex flex-col">
+          <form onSubmit={handleSubmit} className="xl:mt-29 mt-10 mb-15 flex flex-col">
             <Label
               label="Your Name"
               name="name"
@@ -160,9 +160,9 @@ const ContactForm = () => {
             />
 
             {/* textarea */}
-            <div className="h-36 w-full">
+            <div className="h-25 xl:h-36 w-full">
               <label htmlFor="message">
-                <p className="mb-5 w-fit cursor-pointer">Message</p>
+                <p className="mb-2 text-sm xl:text-base xl:mb-5 w-fit cursor-pointer">Message</p>
 
                 <textarea
                   rows={4}
@@ -177,14 +177,14 @@ const ContactForm = () => {
                 />
 
                 {errors.message && (
-                  <p className="mt-1 text-sm text-red-500">{errors.message}</p>
+                  <p className="mt-1 text-xs xl:text-sm text-red-500">{errors.message}</p>
                 )}
               </label>
             </div>
 
             <button
               type="submit"
-              className="bg-dark-orange mt-4 w-fit cursor-pointer rounded px-22 py-3 text-white"
+              className="bg-dark-orange mt-4 mx-auto sm:mx-0 w-fit cursor-pointer rounded px-22 py-3 text-white"
             >
               Submit
             </button>
