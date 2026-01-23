@@ -21,18 +21,18 @@ const ModalPage = ({onClick, children}:any) => {
             color="red"
             className="bg-red/30 mx-auto mt-4 h-16 w-16 rounded-full p-2"
           />
-          <h3 className="mt-6 text-lg">Do you want to {children}?</h3>
+          <h3 className="mt-6 lg:text-lg">Do you want to {children}?</h3>
         </div>
 
         <div className="mt-10 flex w-full justify-end! gap-4">
           <Button
-            className="bg-dark-orange! cursor-pointer ring-0!"
+            className="bg-dark-orange! text-xs lg:text-sm cursor-pointer ring-0!"
             onClick={onClick}
           >
             Yes, I'm sure
           </Button>
           <Button
-            className="bg-border/20! cursor-pointer font-light! text-black ring-0!"
+            className="bg-border/20! cursor-pointer text-xs lg:text-sm font-light! text-black ring-0!"
             onClick={() => setOpenModal(false)}
           >
             No, cancel
