@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import AppLayout from "./layout/AppLayout";
 import Shop from "./pages/shop/Shop";
@@ -13,6 +14,9 @@ import ProtectedRoute from "./routes/ProtectedRoute";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Home from "./pages/home/Home";
+import Loader from "./UI/Loader";
+import ErrorBoundary from "./UI/ErrorBoundary";
+const SearchPage = lazy(() => import("./pages/search/SearchPage"));
 
 const App = () => {
   return (
@@ -33,6 +37,16 @@ const App = () => {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/blog" element={<Blog />} />
+          <Route
+            path="/search"
+            element={
+              <ErrorBoundary>
+                <Suspense fallback={<Loader />}>
+                  <SearchPage />
+                </Suspense>
+              </ErrorBoundary>
+            }
+          />
           <Route path="*" element={<NotFound />} />
         </Route>
         <Route

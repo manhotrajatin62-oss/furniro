@@ -1,4 +1,5 @@
 import { createContext, useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const ProductContext = createContext({});
 
@@ -8,8 +9,17 @@ const ProductContextProvider = ({ children }: any) => {
   const [toggleCart, setToggleCart] = useState(false); // toggle cart section
   const [quantity, setQuantity] = useState(0); // how many products to add in cart
   const [message, setMessage] = useState(""); // validation for the quantity of products
-  const [hasLoaded, setHasLoaded] = useState(false);
-  const [openModal, setOpenModal] = useState(false);
+  const [hasLoaded, setHasLoaded] = useState(false); // load the cart data on reload
+  const [openModal, setOpenModal] = useState(false); // open/close modal
+  const [searchValue, setSearchValue] = useState(""); // search input value
+
+  const navigate = useNavigate();
+
+  const handleSearch = () => {
+    if (!searchValue.trim()) return;
+
+    navigate(`/search?q=${encodeURIComponent(searchValue)}`);
+  };
 
   // fetch products
   async function fetchData() {
@@ -144,8 +154,11 @@ const ProductContextProvider = ({ children }: any) => {
       decrement,
       openModal,
       setOpenModal,
+      searchValue,
+      setSearchValue,
+      handleSearch,
     }),
-    [productData, cart, toggleCart, quantity, message, openModal],
+    [productData, cart, toggleCart, quantity, message, openModal, searchValue],
   );
 
   return (

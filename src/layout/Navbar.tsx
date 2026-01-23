@@ -9,9 +9,56 @@ import { toast } from "react-toastify";
 import ModalPage from "../UI/ModalPage";
 import LogoutDropdown from "../components/LogoutDropdown";
 
+const SearchBar = ({
+  showSearch,
+  searchValue,
+  setSearchValue,
+  handleSearch,
+  setMobileMenu,
+}: any) => {
+  function searchOnEnter(e: any) {
+    if (e.key == "Enter") {
+      handleSearch();
+      setMobileMenu(false);
+    } else return;
+  }
+
+  return (
+    <div
+      className={`border-light-grey flex items-center overflow-hidden rounded-4xl border transition-all duration-300 ${showSearch ? "w-50 px-3 py-0.5 opacity-100" : "w-0 border-0 px-0 py-0 opacity-0"} `}
+    >
+      <input
+        placeholder="Search"
+        type="search"
+        value={searchValue}
+        onChange={(e) => setSearchValue(e.target.value)}
+        onKeyDown={searchOnEnter}
+        className="text-grey1 w-full px-1 text-sm outline-0"
+        name="search"
+        autoComplete="on"
+      />
+      <button
+        onClick={() => {
+          handleSearch();
+          setMobileMenu(false);
+        }}
+      >
+        <Search />
+      </button>
+    </div>
+  );
+};
+
 const Navbar = () => {
-  const { toggleCart, setToggleCart, setOpenModal, cart }: any =
-    useContext(ProductContext);
+  const {
+    toggleCart,
+    setToggleCart,
+    setOpenModal,
+    cart,
+    searchValue,
+    setSearchValue,
+    handleSearch,
+  }: any = useContext(ProductContext);
 
   const [showSearch, setShowSearch] = useState(false);
 
@@ -109,19 +156,13 @@ const Navbar = () => {
           </ul>
 
           <div className="mt-6 flex items-center gap-4">
-            <div
-              className={`border-light-grey flex items-center overflow-hidden rounded-4xl border bg-white transition-all duration-300 ${showSearch ? "w-50 px-3 py-0.5 opacity-100" : "w-0 border-0 px-0 py-0 opacity-0"} `}
-            >
-              <input
-                placeholder="Search"
-                type="search"
-                className="text-grey1 w-full px-1 text-sm outline-0"
-                name="search"
-                id="search"
-                autoComplete="on"
-              />
-              <Search />
-            </div>
+            <SearchBar
+              showSearch={showSearch}
+              searchValue={searchValue}
+              setSearchValue={setSearchValue}
+              handleSearch={handleSearch}
+              setMobileMenu={setMobileMenu}
+            />
 
             <NavSearch setShowSearch={setShowSearch} />
             <Heart />
@@ -156,19 +197,12 @@ const Navbar = () => {
 
           {/* nav icons */}
           <div className="flex items-center gap-8 xl:gap-10">
-            <div
-              className={`border-light-grey flex items-center overflow-hidden rounded-4xl border transition-all duration-300 ${showSearch ? "w-50 px-3 py-0.5 opacity-100" : "w-0 border-0 px-0 py-0 opacity-0"} `}
-            >
-              <input
-                placeholder="Search"
-                type="search"
-                className="text-grey1 w-full px-1 text-sm outline-0"
-                name="search"
-                id="search"
-                autoComplete="on"
-              />
-              <Search />
-            </div>
+            <SearchBar
+              showSearch={showSearch}
+              searchValue={searchValue}
+              setSearchValue={setSearchValue}
+              handleSearch={handleSearch}
+            />
             <LogoutDropdown />
 
             <NavSearch setShowSearch={setShowSearch} />

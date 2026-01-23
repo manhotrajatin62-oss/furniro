@@ -32,6 +32,7 @@ const Shop = () => {
             startIndex={startIndex}
             endIndex={endIndex}
             productData={productData}
+            length={currentProducts.length}
           />
 
           {/* products section */}

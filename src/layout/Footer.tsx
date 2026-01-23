@@ -34,7 +34,7 @@ const Footer = () => {
     <>
       {!hideSection && (
         <section className="bg-light-footer w-full p-5 lg:h-67 lg:px-13 lg:py-15 xl:py-25">
-          <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:flex-wrap lg:h-18">
+          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row sm:flex-wrap lg:h-18">
             {footerOps.map((item) => (
               <div
                 key={item?.heading}

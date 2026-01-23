@@ -1,6 +1,6 @@
 import { Filter, ShowGrid, ShowList } from "../../components/Icons";
 
-const ShopResults = ({ productData, startIndex, endIndex }: any) => {
+const ShopResults = ({ productData, startIndex, endIndex, length }: any) => {
   return (
     <div className="bg-results flex flex-col items-center justify-between gap-4 px-3 py-2 sm:items-start md:flex-row md:items-center lg:h-25 lg:gap-0 lg:px-5 lg:py-5.5 xl:px-25">
       <div className="flex items-center text-sm lg:text-base">
@@ -31,7 +31,7 @@ const ShopResults = ({ productData, startIndex, endIndex }: any) => {
         <div className="flex items-center gap-4">
           <p>Show</p>
           <div className="text-footer flex h-10 w-10 items-center justify-center bg-white lg:h-14 lg:w-14">
-            8
+            {length}
           </div>
         </div>
 
