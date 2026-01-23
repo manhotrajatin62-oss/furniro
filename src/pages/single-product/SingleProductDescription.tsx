@@ -3,16 +3,16 @@ import description2 from "../../assets/single-product/description2.png"
 
 const SingleProductDescription = () => {
   return (
-    <div className="text-footer border-light-grey h-186 border-t">
-      <div className="mx-auto mt-12 flex w-165 items-center gap-13">
-        <h1 className="cursor-pointer text-2xl font-medium text-black">
+    <div className="text-footer p-5 xl:p-0 border-light-grey xl:h-186 border-t">
+      <div className="mx-auto text-xl lg:text-2xl mt-6 xl:mt-12 flex flex-col sm:flex-row xl:w-165 items-center justify-center gap-4 lg:gap-13">
+        <h1 className="cursor-pointer font-medium text-black">
           Description
         </h1>
-        <h1 className="cursor-pointer text-2xl">Additional Information</h1>
-        <h1 className="cursor-pointer text-2xl">Reviews [5]</h1>
+        <h1 className="cursor-pointer">Additional Information</h1>
+        <h1 className="cursor-pointer">Reviews [5]</h1>
       </div>
 
-      <div className="mt-9 mx-auto text-justify h-43 w-5xl">
+      <div className="mt-9 mx-auto text-sm xl:text-base text-justify lg:w-4xl xl:h-43 xl:w-5xl">
         <p>
           Embodying the raw, wayward spirit of rock 'n' roll, the Kilburn
           portable active stereo speaker takes the unmistakable look and sound
@@ -31,7 +31,7 @@ const SingleProductDescription = () => {
         </p>
       </div>
 
-      <div className="mt-9 mx-auto justify-center w-309 h-87 flex items-center gap-7">
+      <div className="mt-9 mx-auto justify-center xl:w-309 xl:h-87 flex-col xl:flex-row flex items-center gap-7">
 
             <img draggable={false} src={description1} alt="description" />
             <img draggable={false} src={description2} alt="description" />

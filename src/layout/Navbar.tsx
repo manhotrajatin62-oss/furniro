@@ -78,16 +78,16 @@ const Navbar = () => {
           className={`${mobileMenu ? "h-50" : "h-0"} mt-2 overflow-hidden px-4 transition-[height] duration-200`}
         >
           <ul className="flex flex-col items-start gap-4 text-sm lg:text-base">
-            <NavLink className="w-[80%]" to={"/"}>
+            <NavLink onClick={()=>setMobileMenu(false)} className="w-[80%]" to={"/"}>
               <li className="cursor-pointer">Home</li>
             </NavLink>
-            <NavLink className="w-[80%]" to={"/shop"}>
+            <NavLink onClick={()=>setMobileMenu(false)} className="w-[80%]" to={"/shop"}>
               <li className="cursor-pointer">Shop</li>
             </NavLink>
-            <NavLink className="w-[80%]" to={"/contact"}>
+            <NavLink onClick={()=>setMobileMenu(false)} className="w-[80%]" to={"/contact"}>
               <li className="cursor-pointer">Contact</li>
             </NavLink>
-            <NavLink className="w-[80%]" to={"/blog"}>
+            <NavLink onClick={()=>setMobileMenu(false)} className="w-[80%]" to={"/blog"}>
               <li className="cursor-pointer">Blog</li>
             </NavLink>
           </ul>

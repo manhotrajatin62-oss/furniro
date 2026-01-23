@@ -28,7 +28,7 @@ const SingleProductsRelated = () => {
   return (
     <section className="border-light-grey flex mb-23 flex-col items-center border-t">
       {/* heading */}
-      <h1 className="mt-14 text-center text-4xl font-medium">
+      <h1 className="mt-14 text-center text-2xl xl:text-4xl font-medium">
         Related Products
       </h1>
 

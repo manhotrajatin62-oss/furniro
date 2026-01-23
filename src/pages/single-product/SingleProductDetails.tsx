@@ -51,9 +51,9 @@ const SingleProductDetails = ({ singleProductData }: any) => {
 
   return (
     <div>
-      <div className="flex h-full items-start gap-20.5 px-25 pt-9 pb-14">
+      <div className="flex h-full flex-col items-start gap-10 p-5 lg:flex-row xl:gap-20.5 xl:px-25 xl:pt-9 xl:pb-14">
         {/* images container */}
-        <div className="flex items-start gap-8">
+        <div className="flex w-full h-85 sm:w-120 mx-auto lg:w-full lg:h-full items-start gap-8">
           <div className="flex flex-col gap-8">
             <img
               draggable={false}
@@ -81,20 +81,20 @@ const SingleProductDetails = ({ singleProductData }: any) => {
             />
           </div>
 
-          <div className="bg-results flex h-125 w-105 items-center justify-center overflow-hidden rounded-lg">
+          <div className="bg-results flex h-full w-full items-center justify-center overflow-hidden rounded-lg lg:h-125 lg:w-105">
             <img
               draggable={false}
               src={singleProductData?.image}
               alt={singleProductData?.title}
-              className="h-[80%] w-[80%] object-contain"
+              className="h-[60%] w-[60%] object-contain lg:h-[80%] lg:w-[80%]"
             />
           </div>
         </div>
 
         {/* product details and add to cart */}
         <div className="flex flex-col">
-          <h1 className="text-4xl">{singleProductData?.title}</h1>
-          <p className="text-footer text-2xl font-medium">
+          <h1 className="text-2xl xl:text-4xl">{singleProductData?.title}</h1>
+          <p className="text-footer text-xl font-medium xl:text-2xl">
             Rs. {singleProductData?.price}
           </p>
 
@@ -107,12 +107,14 @@ const SingleProductDetails = ({ singleProductData }: any) => {
               <HalfStar />
             </div>
 
-            <p className="text-footer border-footer border-l pl-6 font-light">
+            <p className="text-footer border-footer border-l pl-6 text-sm font-light xl:text-base">
               {singleProductData?.rating?.count} Customer Review
             </p>
           </div>
 
-          <p className="mt-3 w-md text-sm">{singleProductData?.description}</p>
+          <p className="mt-3 text-sm xl:w-md">
+            {singleProductData?.description}
+          </p>
 
           {/* size select */}
           <div className="mt-5">
@@ -155,7 +157,7 @@ const SingleProductDetails = ({ singleProductData }: any) => {
           </div>
 
           {/* buttons section */}
-          <div className="border-b-light-grey mt-8 flex items-center gap-4 border-b pb-15">
+          <div className="border-b-light-grey mt-8 flex flex-col justify-center xl:justify-start items-center gap-4 border-b pb-8 sm:pb-15 sm:flex-row">
             <div className="relative">
               <div className="border-footer flex h-16 w-30 items-center justify-between rounded-lg border px-3 text-lg">
                 <button
@@ -176,31 +178,31 @@ const SingleProductDetails = ({ singleProductData }: any) => {
               </div>
 
               {message && (
-                <p className="absolute -bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap text-red-500">
+                <p className="absolute -bottom-10 left-1/2 -translate-x-1/2 text-sm whitespace-nowrap text-red-500 xl:text-base">
                   {message}
                 </p>
               )}
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="mt-10 flex flex-col items-center gap-2 sm:mt-0 sm:flex-row">
               <button
                 onClick={() =>
                   inCart
                     ? removeFromCart(singleProductData.id)
                     : handleAddToCart(singleProductData)
                 }
-                className="flex h-16 w-53 cursor-pointer items-center justify-center rounded-2xl border border-black"
+                className="flex h-15 w-40 cursor-pointer items-center justify-center rounded-2xl border border-black text-sm xl:h-16 xl:w-53 xl:text-base"
               >
                 {inCart ? "Remove from Cart" : "Add To Cart"}
               </button>
 
-              <button className="flex h-16 w-53 cursor-pointer items-center justify-center rounded-2xl border border-black">
+              <button className="flex h-15 w-40 cursor-pointer items-center justify-center rounded-2xl border border-black text-sm xl:h-16 xl:w-53 xl:text-base">
                 <pre>+ Compare</pre>
               </button>
             </div>
           </div>
 
-          <div className="text-footer mt-10 space-y-3">
+          <div className="text-footer text-sm xl:text-base mt-10 space-y-3">
             <div className="grid grid-cols-[90px_15px_1fr] items-center">
               <span>SKU</span>
               <span>:</span>

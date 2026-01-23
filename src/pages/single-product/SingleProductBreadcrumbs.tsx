@@ -6,9 +6,9 @@ const SingleProductBreadcrumbs = ({ singleProductData }: any) => {
   const navigate = useNavigate()
 
   return (
-    <div className="bg-results flex items-center px-25 py-8">
+    <div className="bg-results flex flex-col sm:flex-row items-start sm:items-center lg:px-25 lg:py-8 p-4">
       <div className="mr-6 flex items-center gap-6">
-        <Breadcrumb className="mt-2" aria-label="Breadcrumbs">
+        <Breadcrumb  aria-label="Breadcrumbs">
           <BreadcrumbItem
             onClick={()=>navigate("/")}
             className="[&>a]:text-footer cursor-pointer [&>a:hover]:text-footer! [&>svg]:text-black"
@@ -26,7 +26,7 @@ const SingleProductBreadcrumbs = ({ singleProductData }: any) => {
         </Breadcrumb>
       </div>
 
-      <div className="border-footer border-l-2 pl-8.5">
+      <div className="border-footer text-sm xl:text-base sm:border-l-2 sm:pl-8.5">
         <p>{singleProductData?.title}</p>
       </div>
     </div>

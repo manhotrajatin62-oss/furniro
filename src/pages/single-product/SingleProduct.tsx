@@ -35,7 +35,7 @@ const SingleProduct = () => {
   }, [id]);
 
   return (
-    <section className="mt-20">
+    <section className="mt-15 lg:mt-20">
       <ErrorBoundary>
         <Suspense fallback={<Loader />}>
           {/* breadcrumbs */}
