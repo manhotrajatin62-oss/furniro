@@ -25,7 +25,7 @@ const BlogSection = () => {
   ];
 
   return (
-    <div className="flex w-190 flex-col gap-13">
+    <div className="flex md:w-100 lg:w-150 xl:w-190 flex-col gap-13">
           {blogData?.map((item) => {
             return (
               <div key={item?.heading}>
@@ -35,7 +35,7 @@ const BlogSection = () => {
                   alt="blog"
                 />
 
-                <div className="mt-4 flex items-center gap-9">
+                <div className="mt-4 flex text-xs sm:text-sm lg:text-base whitespace-nowrap items-center gap-4 sm:gap-9">
                   <div className="flex items-center gap-2">
                     <Admin />
                     <p className="text-footer">Admin</p>
@@ -50,7 +50,7 @@ const BlogSection = () => {
                   </div>
                 </div>
 
-                <h1 className="mt-4 text-3xl font-medium">{item?.heading}</h1>
+                <h1 className="mt-4 text-2xl xl:text-3xl font-medium">{item?.heading}</h1>
 
                 <p className="text-footer mt-3 text-justify text-sm">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed

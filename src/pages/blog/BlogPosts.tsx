@@ -29,7 +29,7 @@ const BlogPosts = () => {
   ];
 
   return (
-    <div className="py-4 pr-16 pl-19">
+    <div className="sm:py-4 sm:pr-16 sm:pl-19 md:p-10">
       <h1 className="text-2xl font-medium">Recent Posts</h1>
 
       <div className="mt-6 flex flex-col gap-10">
