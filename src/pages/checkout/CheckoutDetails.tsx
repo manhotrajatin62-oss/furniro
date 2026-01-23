@@ -58,7 +58,7 @@ const CheckoutDetails = () => {
   };
 
   return (
-    <section className="flex items-start gap-6 px-20 pt-15 pb-13">
+    <section className="flex flex-col md:flex-row items-start gap-6 md:gap-0 lg:gap-6 lg:px-20 md:pt-15 md:pb-13">
       {/* billing details */}
 
       <CheckoutBilling

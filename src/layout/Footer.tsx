@@ -33,7 +33,7 @@ const Footer = () => {
   return (
     <>
       {!hideSection && (
-        <section className="bg-light-footer w-full p-5 lg:h-67 lg:px-13 lg:py-25">
+        <section className="bg-light-footer w-full p-5 lg:h-67 lg:px-13 lg:py-15 xl:py-25">
           <div className="flex flex-col  items-start justify-between gap-4 lg:h-18 sm:flex-wrap sm:flex-row">
             {footerOps.map((item) => (
               <div

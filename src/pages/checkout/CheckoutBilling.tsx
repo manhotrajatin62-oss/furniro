@@ -60,17 +60,17 @@ const CheckoutBilling = ({ formData, setFormData, errors, setErrors }: any) => {
   ];
 
   return (
-    <div className="px-15">
-      <h1 className="text-4xl font-semibold">Billing details</h1>
+    <div className="p-5 xl:px-15">
+      <h1 className="text-2xl xl:text-4xl font-semibold">Billing details</h1>
 
       <form className="flex flex-col ">
 
         {/* first and last name side-by-side */}
-        <div className="mt-9 h-36 flex items-center gap-8">
+        <div className="xl:mt-9 mt-4 h-25 xl:h-36 flex items-start gap-4 xl:gap-8">
           {["first_name", "last_name"].map((item) => (
             <div key={item} className="w-full">
               <label htmlFor={item} className="block">
-                <p className="mb-5 w-fit cursor-pointer capitalize">
+                <p className="mb-2 xl:mb-5 w-fit cursor-pointer text-sm xl:text-base capitalize">
                   {item.replace("_", " ")}
                 </p>
 
@@ -91,7 +91,7 @@ const CheckoutBilling = ({ formData, setFormData, errors, setErrors }: any) => {
               </label>
 
               {errors[item] && (
-                <p className="mt-1 text-sm text-red-500">{errors[item]}</p>
+                <p className="mt-1 text-xs xl:text-sm text-red-500">{errors[item]}</p>
               )}
             </div>
           ))}
@@ -100,10 +100,10 @@ const CheckoutBilling = ({ formData, setFormData, errors, setErrors }: any) => {
         {/* company name and so on */}
 
         {fields.map((field) => (
-          <div className="w-full h-36" key={field.name}>
+          <div className="w-full h-25 xl:h-36" key={field.name}>
             {field.type !== "select" && (
               <label htmlFor={field.name} className="block">
-                <p className="mb-5 w-fit cursor-pointer capitalize">
+                <p className="mb-2 xl:mb-5 w-fit text-sm xl:text-base cursor-pointer capitalize">
                   {field.label}
                 </p>
 
@@ -129,7 +129,7 @@ const CheckoutBilling = ({ formData, setFormData, errors, setErrors }: any) => {
 
             {field.type === "select" && (
               <label htmlFor={field.name}>
-                <p className="mb-5 w-fit cursor-pointer">{field.label}</p>
+                <p className="mb-2 xl:mb-5 text-sm xl:text-base w-fit cursor-pointer">{field.label}</p>
                 <div
                   className={`${
                     errors[field.name] ? "border-red-500" : ""
@@ -164,7 +164,7 @@ const CheckoutBilling = ({ formData, setFormData, errors, setErrors }: any) => {
             )}
 
             {errors[field.name] && (
-              <p className="mt-1 text-sm text-red-500">{errors[field.name]}</p>
+              <p className="mt-1 text-xs xl:text-sm text-red-500">{errors[field.name]}</p>
             )}
           </div>
         ))}

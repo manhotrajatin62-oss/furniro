@@ -31,7 +31,7 @@
     @apply bg-results flex h-10 w-10 lg:h-15 lg:w-15 cursor-pointer items-center justify-center rounded-lg;
   }
   .input {
-    @apply border-footer h-18 rounded-lg border px-3 outline-0 focus:border-black;
+    @apply border-footer h-12 xl:h-18 text-sm xl:text-base rounded-lg border px-3 outline-0 focus:border-black;
   }
   .form-input{
     @apply placeholder:text-grey3 h-8 w-full rounded-lg border bg-white px-4 text-xs lg:text-sm outline-none placeholder:text-xs lg:h-10.5 lg:placeholder:text-sm xl:w-90.25
