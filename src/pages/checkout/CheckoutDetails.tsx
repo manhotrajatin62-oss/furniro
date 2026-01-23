@@ -3,8 +3,7 @@ import CheckoutBilling from "./CheckoutBilling";
 import CheckoutOrder from "./CheckoutOrder";
 
 const CheckoutDetails = () => {
-
-  const [showCheck ,setShowCheck] = useState(false);
+  const [showCheck, setShowCheck] = useState(false);
 
   const [formData, setFormData] = useState({
     first_name: "",
@@ -54,11 +53,11 @@ const CheckoutDetails = () => {
 
     if (!validate()) return;
 
-    setShowCheck(true)
+    setShowCheck(true);
   };
 
   return (
-    <section className="flex flex-col md:flex-row items-start gap-6 md:gap-0 lg:gap-6 lg:px-20 md:pt-15 md:pb-13">
+    <section className="flex flex-col items-start gap-6 md:flex-row md:gap-0 md:pt-15 md:pb-13 lg:gap-6 lg:px-20">
       {/* billing details */}
 
       <CheckoutBilling

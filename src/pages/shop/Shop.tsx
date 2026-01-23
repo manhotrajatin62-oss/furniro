@@ -35,7 +35,7 @@ const Shop = () => {
           />
 
           {/* products section */}
-          <div className="mx-auto mt-14 mb-10 lg:mb-21 flex w-[90%] flex-col items-center gap-10">
+          <div className="mx-auto mt-14 mb-10 flex w-[90%] flex-col items-center gap-10 lg:mb-21">
             <ProductsGrid data={currentProducts} />
 
             <div className="flex h-22 items-end gap-4 lg:gap-9">

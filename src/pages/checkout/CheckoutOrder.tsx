@@ -1,11 +1,11 @@
 import { FaCheck } from "react-icons/fa";
 
-const CheckoutOrder = ({showCheck, onSubmit}:any) => {
+const CheckoutOrder = ({ showCheck, onSubmit }: any) => {
   return (
     <section className="w-full">
-      <div className="w-full p-5 xl:px-9 flex flex-col items-center xl:py-21">
-        <div className="flex w-full text-sm xl:text-base flex-col gap-4">
-          <p className="flex items-center justify-between text-xl xl:text-2xl font-medium">
+      <div className="flex w-full flex-col items-center p-5 xl:px-9 xl:py-21">
+        <div className="flex w-full flex-col gap-4 text-sm xl:text-base">
+          <p className="flex items-center justify-between text-xl font-medium xl:text-2xl">
             Product<span>Subtotal</span>
           </p>
 
@@ -21,7 +21,8 @@ const CheckoutOrder = ({showCheck, onSubmit}:any) => {
           </p>
 
           <p className="flex items-center justify-between">
-            Total <span className="text-dark-orange text-xl xl:text-2xl font-bold">
+            Total{" "}
+            <span className="text-dark-orange text-xl font-bold xl:text-2xl">
               Rs. 250,000.00
             </span>
           </p>
@@ -42,22 +43,30 @@ const CheckoutOrder = ({showCheck, onSubmit}:any) => {
           </p>
         </div>
 
-        <div className="mt-6 w-full cursor-pointer flex items-center gap-4">
+        <div className="mt-6 flex w-full cursor-pointer items-center gap-4">
           <div className="border-footer h-3.5 w-3.5 rounded-full border" />
           <p className="text-footer text-sm">Direct Bank Transfer</p>
         </div>
 
-        <div className="mt-2 w-full cursor-pointer flex items-center gap-4">
+        <div className="mt-2 flex w-full cursor-pointer items-center gap-4">
           <div className="border-footer h-3.5 w-3.5 rounded-full border" />
           <p className="text-footer text-sm">Cash On Delivery</p>
         </div>
 
-        <p className="mt-6 text-sm font-light text-justify">Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our <span className="font-semibold">privacy policy.</span></p>
+        <p className="mt-6 text-justify text-sm font-light">
+          Your personal data will be used to support your experience throughout
+          this website, to manage access to your account, and for other purposes
+          described in our{" "}
+          <span className="font-semibold">privacy policy.</span>
+        </p>
 
-         <button  onClick={onSubmit} className="lg:text-xl py-3 text-sm px-5  sm:px-14 mt-10 cursor-pointer border rounded-2xl border-black">Place Order</button>
-         {
-          showCheck && <FaCheck className="mt-10" size={30} color="green"/>
-         }
+        <button
+          onClick={onSubmit}
+          className="mt-10 cursor-pointer rounded-2xl border border-black px-5 py-3 text-sm sm:px-14 lg:text-xl"
+        >
+          Place Order
+        </button>
+        {showCheck && <FaCheck className="mt-10" size={30} color="green" />}
       </div>
     </section>
   );

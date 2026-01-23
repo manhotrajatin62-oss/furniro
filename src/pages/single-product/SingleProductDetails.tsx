@@ -53,7 +53,7 @@ const SingleProductDetails = ({ singleProductData }: any) => {
     <div>
       <div className="flex h-full flex-col items-start gap-10 p-5 lg:flex-row xl:gap-20.5 xl:px-25 xl:pt-9 xl:pb-14">
         {/* images container */}
-        <div className="flex w-full h-85 sm:w-120 mx-auto lg:w-full lg:h-full items-start gap-8">
+        <div className="mx-auto flex h-85 w-full items-start gap-8 sm:w-120 lg:h-full lg:w-full">
           <div className="flex flex-col gap-8">
             <img
               draggable={false}
@@ -157,7 +157,7 @@ const SingleProductDetails = ({ singleProductData }: any) => {
           </div>
 
           {/* buttons section */}
-          <div className="border-b-light-grey mt-8 flex flex-col justify-center xl:justify-start items-center gap-4 border-b pb-8 sm:pb-15 sm:flex-row">
+          <div className="border-b-light-grey mt-8 flex flex-col items-center justify-center gap-4 border-b pb-8 sm:flex-row sm:pb-15 xl:justify-start">
             <div className="relative">
               <div className="border-footer flex h-16 w-30 items-center justify-between rounded-lg border px-3 text-lg">
                 <button
@@ -202,7 +202,7 @@ const SingleProductDetails = ({ singleProductData }: any) => {
             </div>
           </div>
 
-          <div className="text-footer text-sm xl:text-base mt-10 space-y-3">
+          <div className="text-footer mt-10 space-y-3 text-sm xl:text-base">
             <div className="grid grid-cols-[90px_15px_1fr] items-center">
               <span>SKU</span>
               <span>:</span>

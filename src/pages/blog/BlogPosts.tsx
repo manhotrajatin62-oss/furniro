@@ -36,7 +36,7 @@ const BlogPosts = () => {
         {postsData?.map((item) => {
           return (
             <div key={item?.title} className="flex items-center gap-3">
-              <img  draggable={false} src={item?.image} alt="post" />
+              <img draggable={false} src={item?.image} alt="post" />
 
               <div>
                 <p>{item?.title}</p>

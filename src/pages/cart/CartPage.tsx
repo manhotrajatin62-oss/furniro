@@ -1,17 +1,16 @@
-import Hero from "../../components/Hero"
-import CartTotal from "./CartTotal"
+import Hero from "../../components/Hero";
+import CartTotal from "./CartTotal";
 
 const CartPage = () => {
   return (
     <section>
+      {/* hero section */}
+      <Hero />
 
-        {/* hero section */}
-        <Hero/>
-
-        {/* cart total section */}
-        <CartTotal/>
+      {/* cart total section */}
+      <CartTotal />
     </section>
-  )
-}
+  );
+};
 
-export default CartPage
+export default CartPage;

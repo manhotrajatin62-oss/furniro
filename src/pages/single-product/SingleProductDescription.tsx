@@ -1,18 +1,16 @@
-import description1 from "../../assets/single-product/description1.png"
-import description2 from "../../assets/single-product/description2.png"
+import description1 from "../../assets/single-product/description1.png";
+import description2 from "../../assets/single-product/description2.png";
 
 const SingleProductDescription = () => {
   return (
-    <div className="text-footer p-5 xl:p-0 border-light-grey xl:h-186 border-t">
-      <div className="mx-auto text-xl lg:text-2xl mt-6 xl:mt-12 flex flex-col sm:flex-row xl:w-165 items-center justify-center gap-4 lg:gap-13">
-        <h1 className="cursor-pointer font-medium text-black">
-          Description
-        </h1>
+    <div className="text-footer border-light-grey border-t p-5 xl:h-186 xl:p-0">
+      <div className="mx-auto mt-6 flex flex-col items-center justify-center gap-4 text-xl sm:flex-row lg:gap-13 lg:text-2xl xl:mt-12 xl:w-165">
+        <h1 className="cursor-pointer font-medium text-black">Description</h1>
         <h1 className="cursor-pointer">Additional Information</h1>
         <h1 className="cursor-pointer">Reviews [5]</h1>
       </div>
 
-      <div className="mt-9 mx-auto text-sm xl:text-base text-justify lg:w-4xl xl:h-43 xl:w-5xl">
+      <div className="mx-auto mt-9 text-justify text-sm lg:w-4xl xl:h-43 xl:w-5xl xl:text-base">
         <p>
           Embodying the raw, wayward spirit of rock 'n' roll, the Kilburn
           portable active stereo speaker takes the unmistakable look and sound
@@ -31,10 +29,9 @@ const SingleProductDescription = () => {
         </p>
       </div>
 
-      <div className="mt-9 mx-auto justify-center xl:w-309 xl:h-87 flex-col xl:flex-row flex items-center gap-7">
-
-            <img draggable={false} src={description1} alt="description" />
-            <img draggable={false} src={description2} alt="description" />
+      <div className="mx-auto mt-9 flex flex-col items-center justify-center gap-7 xl:h-87 xl:w-309 xl:flex-row">
+        <img draggable={false} src={description1} alt="description" />
+        <img draggable={false} src={description2} alt="description" />
       </div>
     </div>
   );

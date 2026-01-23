@@ -5,8 +5,7 @@ import logo from "../assets/logo.svg";
 import { Breadcrumb, BreadcrumbItem } from "flowbite-react";
 
 const Hero = () => {
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { pathname } = useLocation();
   let path = pathname.slice(1);
 
@@ -21,26 +20,27 @@ const Hero = () => {
   else if (pathname === "/blog") heading = "Blog";
 
   return (
-    <section className="relative mt-10 lg:mt-20 flex h-79 items-center justify-center overflow-hidden">
-      <img draggable={false}
+    <section className="relative mt-10 flex h-79 items-center justify-center overflow-hidden lg:mt-20">
+      <img
+        draggable={false}
         src={hero}
         className="h-fit w-fit opacity-50 blur-[.1875rem]"
         alt="hero"
       />
       <div className="absolute top-[50%] left-[50%] flex translate-[-50%] flex-col items-center text-center font-medium">
         {pathname !== "/shop" && (
-          <img  draggable={false} className="h-15 w-15" src={logo} alt="logo" />
+          <img draggable={false} className="h-15 w-15" src={logo} alt="logo" />
         )}
-        <h1 className="text-3xl lg:text-5xl capitalize">{heading}</h1>
+        <h1 className="text-3xl capitalize lg:text-5xl">{heading}</h1>
         <Breadcrumb className="mt-2" aria-label="Breadcrumbs">
           <BreadcrumbItem
-           onClick={()=>navigate("/")}
-            className="[&>span]:text-black cursor-pointer [&>a:hover]:text-black! [&>svg]:text-black"
+            onClick={() => navigate("/")}
+            className="cursor-pointer [&>a:hover]:text-black! [&>span]:text-black [&>svg]:text-black"
           >
             Home
           </BreadcrumbItem>
 
-          <BreadcrumbItem className="capitalize cursor-pointer [&>span]:font-light [&>span]:text-black [&>svg]:text-black">
+          <BreadcrumbItem className="cursor-pointer capitalize [&>span]:font-light [&>span]:text-black [&>svg]:text-black">
             {path}
           </BreadcrumbItem>
         </Breadcrumb>

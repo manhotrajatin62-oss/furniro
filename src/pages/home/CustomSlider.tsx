@@ -37,11 +37,11 @@ const CustomSlider = () => {
   };
 
   return (
-    <section className="relative my-11 flex flex-col lg:flex-row items-center gap-6">
+    <section className="relative my-11 flex flex-col items-center gap-6 lg:flex-row">
       {/* left button */}
       <button
         onClick={goPrev}
-        className="absolute top-[50%] -left-2 sm:-left-12 lg:left-5 z-98 flex lg:h-12 lg:w-12 w-10 h-10 translate-y-[-50%] cursor-pointer items-center justify-center rounded-full bg-white shadow shadow-gray-400"
+        className="absolute top-[50%] -left-2 z-98 flex h-10 w-10 translate-y-[-50%] cursor-pointer items-center justify-center rounded-full bg-white shadow shadow-gray-400 sm:-left-12 lg:left-5 lg:h-12 lg:w-12"
       >
         <SliderArrow left />
       </button>
@@ -51,7 +51,7 @@ const CustomSlider = () => {
         {/* active slide */}
         <div
           key={active}
-          className={`relative w-full sm:h-120 sm:w-60 lg:h-145 lg:w-70 xl:min-w-87 transition-all duration-500 ease-out`}
+          className={`relative w-full transition-all duration-500 ease-out sm:h-120 sm:w-60 lg:h-145 lg:w-70 xl:min-w-87`}
         >
           <img
             alt="demo"
@@ -61,7 +61,7 @@ const CustomSlider = () => {
           />
 
           <div className="absolute bottom-10 left-6 flex items-end">
-            <div className="bg-white/72 w-40 whitespace-nowrap xl:w-fit p-7 backdrop-blur-[3px]">
+            <div className="w-40 bg-white/72 p-7 whitespace-nowrap backdrop-blur-[3px] xl:w-fit">
               <p className="text-grey2 flex items-center gap-2 text-xs xl:text-sm">
                 {"0" + (active + 1)}{" "}
                 <svg
@@ -75,17 +75,19 @@ const CustomSlider = () => {
                 </svg>{" "}
                 {getRoomName(active)}
               </p>
-              <h2 className="text-grey1 text-xl xl:text-2xl font-semibold">Inner Peace</h2>
+              <h2 className="text-grey1 text-xl font-semibold xl:text-2xl">
+                Inner Peace
+              </h2>
             </div>
 
-            <button className="bg-dark-orange flex xl:h-12 h-10 w-10 xl:w-12 cursor-pointer items-center justify-center">
+            <button className="bg-dark-orange flex h-10 w-10 cursor-pointer items-center justify-center xl:h-12 xl:w-12">
               <RightArrow />
             </button>
           </div>
         </div>
 
         {/* second slide */}
-        <div className="lg:h-121 hidden sm:w-60 lg:w-70 sm:block xl:min-w-87 transition-all duration-500 ease-out">
+        <div className="hidden transition-all duration-500 ease-out sm:block sm:w-60 lg:h-121 lg:w-70 xl:min-w-87">
           <img
             alt="second slide"
             draggable={false}
@@ -112,7 +114,7 @@ const CustomSlider = () => {
         </div>
 
         {/* third slide */}
-        <div className="lg:h-121 hidden xl:block lg:w-full transition-all duration-500 ease-out">
+        <div className="hidden transition-all duration-500 ease-out lg:h-121 lg:w-full xl:block">
           <img
             alt="third slide"
             draggable={false}
@@ -122,27 +124,27 @@ const CustomSlider = () => {
         </div>
       </div>
 
-        {/* mobile screen pagination  */}
-       <div className="flex sm:hidden items-center justify-start gap-5">
-            {images.map((item, i) => (
-              <button
-                key={item}
-                onClick={() => goTo(i)}
-                className={`cursor-pointer rounded-full transition ${i === active ? "bg-transparent" : "bg-grey5 h-3 w-3"} `}
-              >
-                {i === active && (
-                  <div className="border-dark-orange flex h-5 w-5 items-center justify-center rounded-full border-2">
-                    <div className="bg-dark-orange h-2.5 w-2.5 rounded-full"></div>
-                  </div>
-                )}
-              </button>
-            ))}
-          </div>
+      {/* mobile screen pagination  */}
+      <div className="flex items-center justify-start gap-5 sm:hidden">
+        {images.map((item, i) => (
+          <button
+            key={item}
+            onClick={() => goTo(i)}
+            className={`cursor-pointer rounded-full transition ${i === active ? "bg-transparent" : "bg-grey5 h-3 w-3"} `}
+          >
+            {i === active && (
+              <div className="border-dark-orange flex h-5 w-5 items-center justify-center rounded-full border-2">
+                <div className="bg-dark-orange h-2.5 w-2.5 rounded-full"></div>
+              </div>
+            )}
+          </button>
+        ))}
+      </div>
 
       {/* right button */}
       <button
         onClick={goNext}
-        className="absolute top-[50%] -right-2 sm:-right-12 lg:right-4 xl:right-12 z-98 flex lg:h-12 lg:w-12 h-10 w-10 translate-y-[-50%] cursor-pointer items-center justify-center rounded-full bg-white shadow shadow-gray-400"
+        className="absolute top-[50%] -right-2 z-98 flex h-10 w-10 translate-y-[-50%] cursor-pointer items-center justify-center rounded-full bg-white shadow shadow-gray-400 sm:-right-12 lg:right-4 lg:h-12 lg:w-12 xl:right-12"
       >
         <SliderArrow />
       </button>

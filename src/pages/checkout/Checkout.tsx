@@ -1,18 +1,16 @@
-import Hero from "../../components/Hero"
-import CheckoutDetails from "./CheckoutDetails"
-
+import Hero from "../../components/Hero";
+import CheckoutDetails from "./CheckoutDetails";
 
 const Checkout = () => {
   return (
     <section>
-
       {/* hero section */}
-      <Hero/>
+      <Hero />
 
       {/* checkout details */}
-      <CheckoutDetails/>
+      <CheckoutDetails />
     </section>
-  )
-}
+  );
+};
 
-export default Checkout
+export default Checkout;

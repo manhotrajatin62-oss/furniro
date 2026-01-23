@@ -25,7 +25,7 @@ const ProductsGrid = ({ data, discount }: any) => {
   const navigate = useNavigate();
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 gap-3 xl:grid-cols-4 lg:gap-8">
+    <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:gap-8 xl:grid-cols-4">
       {" "}
       {/*h-230 */}
       {/* product card */}
@@ -34,10 +34,10 @@ const ProductsGrid = ({ data, discount }: any) => {
             return (
               <div
                 key={item?.id}
-                className="bg-light shadow-md shadow-gray-300 group relative flex flex-col lg:h-110 lg:w-70"
+                className="bg-light group relative flex flex-col shadow-md shadow-gray-300 lg:h-110 lg:w-70"
               >
                 {/* image and bubble */}
-                <div className="relative flex items-center bg-white justify-center h-40 lg:h-75">
+                <div className="relative flex h-40 items-center justify-center bg-white lg:h-75">
                   <img
                     draggable={false}
                     src={item?.image}
@@ -50,38 +50,35 @@ const ProductsGrid = ({ data, discount }: any) => {
                 {/* product details */}
                 <div className="px-4 pt-4 lg:pb-7">
                   <div>
-                    <h2 className="text-grey1 truncate lg:text-lg font-bold">
+                    <h2 className="text-grey1 truncate font-bold lg:text-lg">
                       {item?.title}
                     </h2>
-                    <h3 className="text-grey3 mt-2 text-xs lg:text-sm font-semibold">
+                    <h3 className="text-grey3 mt-2 text-xs font-semibold lg:text-sm">
                       Stylish cafe chair
                     </h3>
                   </div>
 
-                  <div className="mt-2 flex flex-col lg:flex-row items-start lg:items-center lg:gap-4">
-                    <h2 className="text-grey1 lg:text-lg font-bold">
+                  <div className="mt-2 flex flex-col items-start lg:flex-row lg:items-center lg:gap-4">
+                    <h2 className="text-grey1 font-bold lg:text-lg">
                       Rp {item?.price}
                     </h2>
-                    <h3 className="text-grey4 text-xs lg:text-sm line-through">
+                    <h3 className="text-grey4 text-xs line-through lg:text-sm">
                       Rp 3.500.000
                     </h3>
                   </div>
-                  </div>
-              
-                  {/* add to cart for mobile  */}
-                     <div className="mt-4 bg-grey1/72 flex flex-col lg:mt-10 lg:hidden items-center gap-4">
-                    <button
-                      onClick={() => navigate(`/shop/${item?.id}`)}
-                      className="text-dark-orange w-full cursor-pointer bg-white p-2 border border-dark-orange text-sm lg:px-12 lg:py-3 font-bold"
-                    >
-                      Add to cart
-                    </button>
+                </div>
 
-                  </div>
-                  
-                
+                {/* add to cart for mobile  */}
+                <div className="bg-grey1/72 mt-4 flex flex-col items-center gap-4 lg:mt-10 lg:hidden">
+                  <button
+                    onClick={() => navigate(`/shop/${item?.id}`)}
+                    className="text-dark-orange border-dark-orange w-full cursor-pointer border bg-white p-2 text-sm font-bold lg:px-12 lg:py-3"
+                  >
+                    Add to cart
+                  </button>
+                </div>
 
-                <div className="bg-grey1/72 hidden absolute top-0 right-0 bottom-0 left-0 z-90 lg:flex items-center justify-center opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                <div className="bg-grey1/72 absolute top-0 right-0 bottom-0 left-0 z-90 hidden items-center justify-center opacity-0 transition-opacity duration-200 group-hover:opacity-100 lg:flex">
                   <div className="mx-auto flex w-[90%] flex-col items-center gap-6">
                     <button
                       onClick={() => navigate(`/shop/${item?.id}`)}
@@ -106,8 +103,6 @@ const ProductsGrid = ({ data, discount }: any) => {
                     </div>
                   </div>
                 </div>
-
-
               </div>
             );
           })

@@ -4,15 +4,15 @@ import BlogSection from "./BlogSection";
 
 const BlogContent = () => {
   return (
-    <section className="flex flex-col p-5 xl:p-0 items-center gap-13">
-      <div className="xl:mx-20 lg:mt-26 flex flex-col md:flex-row items-center md:items-start gap-8">
+    <section className="flex flex-col items-center gap-13 p-5 xl:p-0">
+      <div className="flex flex-col items-center gap-8 md:flex-row md:items-start lg:mt-26 xl:mx-20">
         {/* blog section */}
         <BlogSection />
 
-        <div className="flex xl:w-98 flex-col gap-10">
+        <div className="flex flex-col gap-10 xl:w-98">
           {/* categories */}
           <div>
-            <div className="input md:mx-5 mx-5 sm:mx-10 mt-6 flex h-10 sm:h-14 items-center">
+            <div className="input mx-5 mt-6 flex h-10 items-center sm:mx-10 sm:h-14 md:mx-5">
               <input
                 type="search"
                 className="h-full w-full outline-0"
@@ -23,8 +23,8 @@ const BlogContent = () => {
               <Search blog />
             </div>
 
-            <div className="sm:mt-11 md:m-10 sm:mr-16 sm:mb-15 sm:ml-19 m-5 flex flex-col gap-10">
-              <h1 className="text-xl sm:text-2xl font-medium">Categories</h1>
+            <div className="m-5 flex flex-col gap-10 sm:mt-11 sm:mr-16 sm:mb-15 sm:ml-19 md:m-10">
+              <h1 className="text-xl font-medium sm:text-2xl">Categories</h1>
 
               <p className="text-footer flex w-full items-center justify-between">
                 Crafts<span>2</span>

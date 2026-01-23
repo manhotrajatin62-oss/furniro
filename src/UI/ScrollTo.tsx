@@ -48,10 +48,10 @@ const ScrollTo = () => {
   return (
     <button
       onClick={scrollHandler}
-      className="bg-dark-orange z-98 fixed right-5 bottom-5 lg:right-10 lg:bottom-10 flex h-12 w-12 cursor-pointer items-center justify-center rounded-lg text-white shadow-lg transition hover:scale-105"
+      className="bg-dark-orange fixed right-5 bottom-5 z-98 flex h-12 w-12 cursor-pointer items-center justify-center rounded-lg text-white shadow-lg transition hover:scale-105 lg:right-10 lg:bottom-10"
       aria-label={atBottom ? "Scroll to top" : "Scroll to bottom"}
     >
-      {atBottom ? <IoIosArrowUp/> : <IoIosArrowDown/>}
+      {atBottom ? <IoIosArrowUp /> : <IoIosArrowDown />}
     </button>
   );
 };

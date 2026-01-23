@@ -44,7 +44,7 @@ const Navbar = () => {
               src={logo}
               alt="brand logo"
             />
-            <h1 className="text-xl md:text-2xl font-bold">Furniro</h1>
+            <h1 className="text-xl font-bold md:text-2xl">Furniro</h1>
           </div>
 
           <div className="flex items-center gap-4">
@@ -78,16 +78,32 @@ const Navbar = () => {
           className={`${mobileMenu ? "h-50" : "h-0"} mt-2 overflow-hidden px-4 transition-[height] duration-200`}
         >
           <ul className="flex flex-col items-start gap-4 text-sm lg:text-base">
-            <NavLink onClick={()=>setMobileMenu(false)} className="w-[80%]" to={"/"}>
+            <NavLink
+              onClick={() => setMobileMenu(false)}
+              className="w-[80%]"
+              to={"/"}
+            >
               <li className="cursor-pointer">Home</li>
             </NavLink>
-            <NavLink onClick={()=>setMobileMenu(false)} className="w-[80%]" to={"/shop"}>
+            <NavLink
+              onClick={() => setMobileMenu(false)}
+              className="w-[80%]"
+              to={"/shop"}
+            >
               <li className="cursor-pointer">Shop</li>
             </NavLink>
-            <NavLink onClick={()=>setMobileMenu(false)} className="w-[80%]" to={"/contact"}>
+            <NavLink
+              onClick={() => setMobileMenu(false)}
+              className="w-[80%]"
+              to={"/contact"}
+            >
               <li className="cursor-pointer">Contact</li>
             </NavLink>
-            <NavLink onClick={()=>setMobileMenu(false)} className="w-[80%]" to={"/blog"}>
+            <NavLink
+              onClick={() => setMobileMenu(false)}
+              className="w-[80%]"
+              to={"/blog"}
+            >
               <li className="cursor-pointer">Blog</li>
             </NavLink>
           </ul>
@@ -115,7 +131,7 @@ const Navbar = () => {
 
       {/* desktop navbar */}
       <nav className="fixed top-0 right-0 left-0 z-99 hidden bg-white lg:block">
-        <section className="flex h-full items-center justify-between py-7 lg:pl-8 lg:pr-8 xl:pr-25 xl:pl-13.5">
+        <section className="flex h-full items-center justify-between py-7 lg:pr-8 lg:pl-8 xl:pr-25 xl:pl-13.5">
           {/* brand logo*/}
           <div className="flex cursor-pointer items-center gap-1">
             <img draggable={false} src={logo} alt="brand logo" />

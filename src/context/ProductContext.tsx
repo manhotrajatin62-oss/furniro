@@ -1,5 +1,4 @@
 import { createContext, useEffect, useMemo, useState } from "react";
-import { toast } from "react-toastify";
 
 export const ProductContext = createContext({});
 
@@ -11,7 +10,6 @@ const ProductContextProvider = ({ children }: any) => {
   const [message, setMessage] = useState(""); // validation for the quantity of products
   const [hasLoaded, setHasLoaded] = useState(false);
   const [openModal, setOpenModal] = useState(false);
-  
 
   // fetch products
   async function fetchData() {
@@ -145,7 +143,7 @@ const ProductContextProvider = ({ children }: any) => {
       increment,
       decrement,
       openModal,
-      setOpenModal
+      setOpenModal,
     }),
     [productData, cart, toggleCart, quantity, message, openModal],
   );

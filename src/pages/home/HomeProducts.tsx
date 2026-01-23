@@ -10,7 +10,7 @@ const HomeProducts = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    if(!productData) return;
+    if (!productData) return;
 
     setData(productData.slice(0, 8));
   }, [productData]);
@@ -28,7 +28,7 @@ const HomeProducts = () => {
   return (
     <section className="mx-auto mt-14 flex w-[90%] flex-col items-center gap-8">
       {/* heading */}
-      <h1 className="text-grey1 text-center text-2xl lg:text-4xl font-bold">
+      <h1 className="text-grey1 text-center text-2xl font-bold lg:text-4xl">
         Our Products
       </h1>
 

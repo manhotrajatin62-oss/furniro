@@ -18,7 +18,7 @@ export const User = ({ setShowDropdown }: any) => (
 
 export const NavSearch = ({ setShowSearch }: any) => (
   <svg
-    key={"nav-search"}
+    key="nav-search"
     onClick={() => setShowSearch((prev: any) => !prev)}
     className="cursor-pointer"
     width="28"
@@ -38,7 +38,7 @@ export const NavSearch = ({ setShowSearch }: any) => (
 
 export const Search = ({ blog }: any) => (
   <svg
-    key={"search"}
+    key="search"
     className="cursor-pointer"
     width="28"
     height="28"
@@ -57,7 +57,7 @@ export const Search = ({ blog }: any) => (
 
 export const Heart = () => (
   <svg
-    key={"heart"}
+    key="heart"
     className="cursor-pointer"
     width="28"
     height="28"
@@ -76,8 +76,8 @@ export const Heart = () => (
 );
 
 export const CartSvg = () => (
-  <svg   
-    key={"cart"}
+  <svg
+    key="cart-svg"
     className="cursor-pointer"
     width="28"
     height="28"
@@ -94,7 +94,7 @@ export const CartSvg = () => (
 
 export const Share = () => (
   <svg
-    key={"share"}
+    key="share"
     width="16"
     height="16"
     viewBox="0 0 16 16"
@@ -110,7 +110,7 @@ export const Share = () => (
 
 export const Compare = () => (
   <svg
-    key={"compare"}
+    key="compare"
     width="16"
     height="16"
     viewBox="0 0 16 16"
@@ -126,7 +126,7 @@ export const Compare = () => (
 
 export const BoldHeart = () => (
   <svg
-    key={"boldHeart"}
+    key="bold-heart"
     width="16"
     height="16"
     viewBox="0 0 16 16"
@@ -143,7 +143,7 @@ export const BoldHeart = () => (
 
 export const SliderArrow = ({ left }: any) => (
   <svg
-    key={"sliderArrow"}
+    key="slider-arrow"
     className={left ? "rotate-180" : "rotate-0"}
     width="24"
     height="24"
@@ -163,7 +163,7 @@ export const SliderArrow = ({ left }: any) => (
 
 export const RightArrow = () => (
   <svg
-    key={"rightArrow"}
+    key="right-arrow"
     width="24"
     height="24"
     viewBox="0 0 24 24"
@@ -182,9 +182,8 @@ export const RightArrow = () => (
 
 export const Trophy = () => (
   <svg
-    
     key="trophy"
-   className="lg:h-15 lg:w-15 h-10 w-10"
+    className="h-10 w-10 lg:h-15 lg:w-15"
     viewBox="0 0 60 60"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -198,8 +197,8 @@ export const Trophy = () => (
 
 export const Warranty = () => (
   <svg
-    key={"warranty"}
-     className="lg:h-15 lg:w-15 h-10 w-10"
+    key="warranty"
+    className="h-10 w-10 lg:h-15 lg:w-15"
     viewBox="0 0 60 60"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -220,8 +219,8 @@ export const Warranty = () => (
 
 export const Shipping = () => (
   <svg
-    key={"shipping"}
-    className="lg:h-15 lg:w-15 h-10 w-10"
+    key="shipping"
+    className="h-10 w-10 lg:h-15 lg:w-15"
     viewBox="0 0 60 60"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -242,8 +241,8 @@ export const Shipping = () => (
 
 export const Support = () => (
   <svg
-    key={"support"}
-     className="lg:h-15 lg:w-15 h-10 w-10"
+    key="support"
+    className="h-10 w-10 lg:h-15 lg:w-15"
     viewBox="0 0 60 60"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -257,7 +256,7 @@ export const Support = () => (
 
 export const HeroArrow = () => (
   <svg
-    key={"hero_arrow"}
+    key="hero-arrow"
     className="absolute top-[50%] right-5 translate-y-[-50%] rotate-90"
     width="20"
     height="20"
@@ -271,7 +270,7 @@ export const HeroArrow = () => (
 
 export const Filter = () => (
   <svg
-    key={"filter"}
+    key="filter"
     width="25"
     height="25"
     viewBox="0 0 25 25"
@@ -289,7 +288,7 @@ export const Filter = () => (
 
 export const ShowGrid = () => (
   <svg
-    key={"show_grid"}
+    key="show-grid"
     className="cursor-pointer"
     width="28"
     height="28"
@@ -307,7 +306,7 @@ export const ShowGrid = () => (
 export const ShowList = () => (
   <svg
     className="cursor-pointer"
-    key={"show_list"}
+    key="show-list"
     width="24"
     height="24"
     viewBox="0 0 24 24"
@@ -323,7 +322,7 @@ export const ShowList = () => (
 
 export const Star = () => (
   <svg
-    key={"star"}
+    key="star"
     width="20"
     height="20"
     viewBox="0 0 20 20"
@@ -339,7 +338,7 @@ export const Star = () => (
 
 export const HalfStar = () => (
   <svg
-    key={"half_star"}
+    key="half-star"
     width="20"
     height="20"
     viewBox="0 0 20 20"
@@ -426,7 +425,7 @@ export const ShoppingBag = ({ setToggleCart }: any) => (
   <svg
     className="cursor-pointer"
     onClick={() => setToggleCart(false)}
-    key={"shopping_bag"}
+    key="shopping-bag"
     width="17"
     height="19"
     viewBox="0 0 17 19"
@@ -450,7 +449,7 @@ export const CartCross = ({ onClick }: any) => (
   <svg
     className="cursor-pointer"
     onClick={onClick}
-    key={"cart-cross"}
+    key="cart-cross"
     width="20"
     height="20"
     viewBox="0 0 20 20"
@@ -468,7 +467,7 @@ export const CartCross = ({ onClick }: any) => (
 
 export const DeleteCart = ({ onClick }: any) => (
   <svg
-    key={"delete_cart"}
+    key="delete-cart"
     className="cursor-pointer"
     onClick={onClick}
     width="28"
@@ -486,7 +485,7 @@ export const DeleteCart = ({ onClick }: any) => (
 
 export const Location = () => (
   <svg
-    key={"location"}
+    key="location"
     width="30"
     height="30"
     viewBox="0 0 22 28"
@@ -502,7 +501,7 @@ export const Location = () => (
 
 export const Phone = () => (
   <svg
-    key={"phone"}
+    key="phone"
     width="30"
     height="30"
     viewBox="0 0 30 30"
@@ -518,7 +517,7 @@ export const Phone = () => (
 
 export const Clock = () => (
   <svg
-    key={"clock"}
+    key="clock"
     width="23"
     height="23"
     viewBox="0 0 23 23"
@@ -541,7 +540,7 @@ export const Clock = () => (
 
 export const Admin = () => (
   <svg
-    key={"admin"}
+    key="admin"
     width="20"
     height="20"
     viewBox="0 0 20 20"
@@ -557,7 +556,7 @@ export const Admin = () => (
 
 export const Calender = () => (
   <svg
-    key={"calender"}
+    key="calender"
     width="20"
     height="20"
     viewBox="0 0 20 20"
@@ -573,7 +572,7 @@ export const Calender = () => (
 
 export const Tag = () => (
   <svg
-    key={"tag"}
+    key="tag"
     width="24"
     height="24"
     viewBox="0 0 24 24"
@@ -589,7 +588,7 @@ export const Tag = () => (
 
 export const FacebookLogin = () => (
   <svg
-    key={"facebook-login"}
+    key="facebook-login"
     xmlns="http://www.w3.org/2000/svg"
     width="20"
     height="20"
@@ -605,7 +604,7 @@ export const FacebookLogin = () => (
 
 export const GoogleLogin = () => (
   <svg
-  key={"google-login"}
+    key="google-login"
     xmlns="http://www.w3.org/2000/svg"
     width="20"
     height="20"

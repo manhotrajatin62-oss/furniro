@@ -3,9 +3,8 @@ import { useContext } from "react";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 import { ProductContext } from "../context/ProductContext";
 
-const ModalPage = ({onClick, children}:any) => {
-
-  const {openModal, setOpenModal}:any = useContext(ProductContext)
+const ModalPage = ({ onClick, children }: any) => {
+  const { openModal, setOpenModal }: any = useContext(ProductContext);
 
   return (
     <Modal
@@ -26,13 +25,13 @@ const ModalPage = ({onClick, children}:any) => {
 
         <div className="mt-10 flex w-full justify-end! gap-4">
           <Button
-            className="bg-dark-orange! text-xs lg:text-sm cursor-pointer ring-0!"
+            className="bg-dark-orange! cursor-pointer text-xs ring-0! lg:text-sm"
             onClick={onClick}
           >
             Yes, I'm sure
           </Button>
           <Button
-            className="bg-border/20! cursor-pointer text-xs lg:text-sm font-light! text-black ring-0!"
+            className="bg-border/20! cursor-pointer text-xs font-light! text-black ring-0! lg:text-sm"
             onClick={() => setOpenModal(false)}
           >
             No, cancel

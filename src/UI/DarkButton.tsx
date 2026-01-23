@@ -1,6 +1,6 @@
-const DarkButton = ({text}:any) => {
+const DarkButton = ({ text }: any) => {
   return (
-    <button className="bg-dark-orange w-fit text-sm lg:text-base cursor-pointer p-4 lg:px-12 lg:py-5 font-bold text-white">
+    <button className="bg-dark-orange w-fit cursor-pointer p-4 text-sm font-bold text-white lg:px-12 lg:py-5 lg:text-base">
       {text}
     </button>
   );

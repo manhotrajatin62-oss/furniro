@@ -1,17 +1,16 @@
-import Hero from "../../components/Hero"
-import ContactForm from "./ContactForm"
+import Hero from "../../components/Hero";
+import ContactForm from "./ContactForm";
 
 const Contact = () => {
   return (
     <section>
+      {/* hero section */}
+      <Hero />
 
-        {/* hero section */}
-        <Hero/>
-
-        {/* contact form */}
-        <ContactForm/>
+      {/* contact form */}
+      <ContactForm />
     </section>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;

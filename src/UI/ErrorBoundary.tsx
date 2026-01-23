@@ -20,7 +20,7 @@ class ErrorBoundary extends React.Component<any, any> {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="p-10 mt-10 text-center">
+        <div className="mt-10 p-10 text-center">
           <h2 className="mb-10 text-xl font-semibold">Something went wrong!</h2>
 
           <LightButton onClick={() => globalThis.location.reload()}>

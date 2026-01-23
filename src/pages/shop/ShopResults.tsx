@@ -2,8 +2,7 @@ import { Filter, ShowGrid, ShowList } from "../../components/Icons";
 
 const ShopResults = ({ productData, startIndex, endIndex }: any) => {
   return (
-    <div className="bg-results flex flex-col items-center justify-between gap-4 px-3 py-2 sm:items-start md:items-center md:flex-row lg:h-25 lg:gap-0 lg:px-5 xl:px-25 lg:py-5.5">
-      
+    <div className="bg-results flex flex-col items-center justify-between gap-4 px-3 py-2 sm:items-start md:flex-row md:items-center lg:h-25 lg:gap-0 lg:px-5 lg:py-5.5 xl:px-25">
       <div className="flex items-center text-sm lg:text-base">
         {/* results options */}
         <div className="mr-7.5 flex items-center gap-2 lg:gap-6">

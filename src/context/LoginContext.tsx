@@ -91,7 +91,7 @@ const LoginContextProvider = ({ children }: any) => {
     }
 
     return setEmailStatus({
-     status: "idle",
+      status: "idle",
       message: "",
       success: true,
     });
@@ -136,9 +136,9 @@ const LoginContextProvider = ({ children }: any) => {
 
     if (strength === 4) {
       return setPasswordStatus({
-       status: "idle",
-      message: "",
-      success: true,
+        status: "idle",
+        message: "",
+        success: true,
       });
     }
   }
@@ -164,7 +164,7 @@ const LoginContextProvider = ({ children }: any) => {
     }
 
     return setConfirmPasswordStatus({
-     status: "idle",
+      status: "idle",
       message: "",
       success: true,
     });
@@ -209,7 +209,7 @@ const LoginContextProvider = ({ children }: any) => {
         success: false,
       });
 
-      toast.success("Login Successful")
+      toast.success("Login Successful");
 
       return;
     }
@@ -287,7 +287,7 @@ const LoginContextProvider = ({ children }: any) => {
       success: false,
     });
 
-    toast.success("Signup Successful")
+    toast.success("Signup Successful");
   }
 
   const contextValue = useMemo(

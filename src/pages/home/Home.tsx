@@ -8,8 +8,6 @@ import Loader from "../../UI/Loader";
 import ErrorBoundary from "../../UI/ErrorBoundary";
 
 const Home = () => {
-
-
   return (
     <>
       {/* card section */}

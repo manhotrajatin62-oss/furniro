@@ -1,5 +1,7 @@
 @import "tailwindcss";
+
 @import "flowbite-react/plugin/tailwindcss";
+
 @source "../.flowbite-react/class-list.json";
 
 @theme {
@@ -28,16 +30,23 @@
 
 @layer components {
   .grid-btn {
-    @apply bg-results flex h-10 w-10 lg:h-15 lg:w-15 cursor-pointer items-center justify-center rounded-lg;
+    @apply bg-results flex h-10 w-10 cursor-pointer items-center justify-center
+    rounded-lg lg:h-15 lg:w-15;
   }
+  
   .input {
-    @apply border-footer h-12 xl:h-18 text-sm xl:text-base rounded-lg border px-3 outline-0 focus:border-black;
+    @apply border-footer h-12 rounded-lg border px-3 text-sm outline-0
+    focus:border-black xl:h-18 xl:text-base;
   }
-  .form-input{
-    @apply placeholder:text-grey3 h-8 w-full rounded-lg border bg-white px-4 text-xs lg:text-sm outline-none placeholder:text-xs lg:h-10.5 lg:placeholder:text-sm xl:w-90.25
+  
+  .form-input {
+    @apply h-8 w-full rounded-lg border bg-white px-4 text-xs outline-none
+    placeholder:text-grey3 placeholder:text-xs lg:text-sm lg:h-10.5
+    lg:placeholder:text-sm xl:w-90.25;
   }
-  .form-label{
-    @apply text-xs lg:text-sm mb-2 cursor-pointer w-fit
+  
+  .form-label {
+    @apply mb-2 w-fit cursor-pointer text-xs lg:text-sm;
   }
 }
 

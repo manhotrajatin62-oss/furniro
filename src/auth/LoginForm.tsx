@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { LoginContext } from "../context/LoginContext";
 import { FacebookLogin, GoogleLogin } from "../components/Icons";
@@ -80,7 +80,7 @@ const LoginForm = () => {
   );
 
   return (
-    <section className="absolute sm:w-fit bg-white/70 w-[90%] top-[50%] left-[50%] translate-[-50%]  lg:static lg:translate-0   flex mx-auto  flex-col gap-2 rounded-xl p-4 xl:w-fit">
+    <section className="absolute top-[50%] left-[50%] mx-auto flex w-[90%] translate-[-50%] flex-col gap-2 rounded-xl bg-white/70 p-4 sm:w-fit lg:static lg:translate-0 xl:w-fit">
       {/* heading */}
       <div className="flex flex-col items-start gap-3">
         <h1 className="text-lg font-semibold lg:text-4xl">
@@ -98,7 +98,7 @@ const LoginForm = () => {
 
       {/* name input */}
       {!isLogin && (
-        <div className="mx-auto w-full h-18 mt-2 sm:mt-4 sm:w-80 lg:mt-5 lg:h-20 lg:w-full xl:mt-4">
+        <div className="mx-auto mt-2 h-18 w-full sm:mt-4 sm:w-80 lg:mt-5 lg:h-20 lg:w-full xl:mt-4">
           <label htmlFor="name">
             <p className="form-label">Name</p>
             <input
@@ -126,7 +126,7 @@ const LoginForm = () => {
 
       {/* email input */}
       <div
-        className={`${isLogin ? "mt-2 lg:mt-5 xl:mt-5" : "mt-0"} mx-auto h-18  w-full sm:w-80 lg:h-20 lg:w-full`}
+        className={`${isLogin ? "mt-2 lg:mt-5 xl:mt-5" : "mt-0"} mx-auto h-18 w-full sm:w-80 lg:h-20 lg:w-full`}
       >
         <label htmlFor="email">
           <p className="form-label">Email</p>
@@ -236,39 +236,36 @@ const LoginForm = () => {
       </button>
 
       {/* google facebook login buttons */}
-      {
-        isLogin && (
-
-         <>
-          <div className="relative flex items-center gap-2 justify-center text-grey3 text-xs lg:text-sm my-2 lg:my-4">
-            <div className="h-px w-full bg-grey3" />
+      {isLogin && (
+        <>
+          <div className="text-grey3 relative my-2 flex items-center justify-center gap-2 text-xs lg:my-4 lg:text-sm">
+            <div className="bg-grey3 h-px w-full" />
             <p>or</p>
-            <div className="h-px w-full bg-grey3" />
+            <div className="bg-grey3 h-px w-full" />
           </div>
 
-          <div className="flex w-full gap-4 lg:gap-8 items-center">
-            
-            <button className="flex w-full text-xs lg:text-sm cursor-pointer gap-4 p-3 border border-border bg-white rounded items-center">
-              <FacebookLogin/>
+          <div className="flex w-full items-center gap-4 lg:gap-8">
+            <button className="border-border flex w-full cursor-pointer items-center gap-4 rounded border bg-white p-3 text-xs lg:text-sm">
+              <FacebookLogin />
               Facebook
             </button>
-            <button className="flex w-full text-xs lg:text-sm cursor-pointer gap-4 p-3 border border-border bg-white rounded items-center">
-              <GoogleLogin/>
+            <button className="border-border flex w-full cursor-pointer items-center gap-4 rounded border bg-white p-3 text-xs lg:text-sm">
+              <GoogleLogin />
               Google
             </button>
           </div>
-
-         </>
-        )
-      }
+        </>
+      )}
 
       {/* sign up button */}
 
-      <div className="text-grey w-full mx-auto mt-2 flex flex-col items-center gap-2 text-xs lg:mt-8 lg:text-sm">
-        <p className="text-grey2">{isLogin ? "Don't" : "Already"} have an account? </p>
+      <div className="text-grey mx-auto mt-2 flex w-full flex-col items-center gap-2 text-xs lg:mt-8 lg:text-sm">
+        <p className="text-grey2">
+          {isLogin ? "Don't" : "Already"} have an account?{" "}
+        </p>
         <button
           onClick={() => setIsLogin(!isLogin)}
-          className="bg-light-button h-10 mt-2 w-full cursor-pointer p-2 font-semibold text-xs text-black"
+          className="bg-light-button mt-2 h-10 w-full cursor-pointer p-2 text-xs font-semibold text-black"
         >
           {isLogin ? "Create Account" : "Log In"}
         </button>
