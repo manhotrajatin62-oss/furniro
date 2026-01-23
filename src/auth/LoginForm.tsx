@@ -85,11 +85,7 @@ const LoginForm = () => {
       <div className="flex flex-col items-start gap-3">
         <h1 className="text-lg font-semibold lg:text-4xl">
           {isLogin ? (
-            <>
-              Welcome
-              <br />
-              back!
-            </>
+            "Log In"
           ) : (
             "Sign Up"
           )}

@@ -149,7 +149,7 @@ const CartTotal = () => {
         onClick={() => {
           removeFromCart(rowData?.id);
           setOpenModal(false);
-          toast.error("Item removed successfully");
+          toast.success("Item removed successfully");
         }}
       >
         {"remove" + " " + rowData?.title}

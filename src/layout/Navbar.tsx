@@ -68,7 +68,7 @@ const Navbar = () => {
     localStorage.clear();
     navigate("/login");
     setOpenModal(false);
-    toast.error("Logout Successful");
+    toast.success("Logout Successful");
   }
 
   const [mobileMenu, setMobileMenu] = useState(false);
